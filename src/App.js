@@ -55,7 +55,7 @@ class App extends Component {
               </NavItem>
             </Nav>
           </div>
-          <Integrals />
+          <Integrals type="basic" />
         </Container>
     );
   }
