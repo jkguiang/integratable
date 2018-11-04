@@ -145,14 +145,12 @@ class IntegralResult extends Component {
                 waQuery += this.props.constMap[q];
             }
             else {
-                waQuery += q;
+                waQuery += encodeURIComponent(q);
             }
         }
         console.log(waQuery);
-        console.log(encodeURI(waQuery));
         const scope = this;
         x.open("GET", `https://cors-anywhere.herokuapp.com/http://api.wolframalpha.com/v2/query?appid=P5HRRU-GRAQ5ALWWL&input=${waQuery}&podtitle=Definite+integral&format=image&output=json`, true);
-        // x.open("GET", "https://cors-anywhere.herokuapp.com/http://api.wolframalpha.com/v2/query?appid=P5HRRU-GRAQ5ALWWL&input=integrate+2x+from+1+to+2&podtitle=Definite+integral&format=image&output=json", true);
         console.log(x);
         x.onload = x.onerror = function() {
             var response = JSON.parse(x.responseText);
@@ -162,10 +160,10 @@ class IntegralResult extends Component {
         x.send();
     }
     render() {
-        if (this.state.result != "") {
+        if (this.state.result !== "") {
             return (
                 <React.Fragment>
-                  <img src={this.state.result} alt="test"/>
+                  <img src={this.state.result} alt="missing"/>
                 </React.Fragment>
             );
         }
