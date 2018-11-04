@@ -1,10 +1,33 @@
 import React, { Component } from 'react';
+import { HashRouter as Router, Route } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import {
+  faCalculator,
+  faAngleDoubleRight,
+  faHome,
+  faCheckCircle,
+  faExternalLinkSquareAlt,
+  faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Container } from 'reactstrap';
 import './App.css';
 import Integrals from './Integrals';
 import { Nav, NavItem, Dropdown, DropdownItem, DropdownToggle, DropdownMenu, NavLink } from 'reactstrap';
+import { BasicIntegrals, RationalIntegrals } from './Pages';
 
-class App extends Component {
+// Load icons
+library.add(
+  fab,
+  faCalculator,
+  faAngleDoubleRight,
+  faHome,
+  faCheckCircle,
+  faExternalLinkSquareAlt,
+  faTimesCircle );
+
+class MainNavbar extends Component {
     constructor(props) {
       super(props);
 
@@ -24,11 +47,8 @@ class App extends Component {
           paddingTop: "5px",
           paddingBottom: "15px"
       }
-      var appStyle = {
-          minWidth: "768px"
-      }
     return (
-        <Container style={appStyle}>
+        <React.Fragment>
           <header className="blog-header py-3">
             <div className="text-center">
               <a className="blog-header-logo text-dark" href="#">Integratable</a>
@@ -36,32 +56,67 @@ class App extends Component {
           </header>
           <div style={navStyle}>
             <Nav pills className="justify-content-center">
-              <NavItem>
-                <NavLink href="#">Home</NavLink>
-              </NavItem>
+              <LinkContainer to="/">
+                <NavItem>
+                  <NavLink href="/"><FontAwesomeIcon icon="home" /> Home</NavLink>
+                </NavItem>
+              </LinkContainer>
               <Dropdown nav isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                 <DropdownToggle nav caret>
                   Integrals
                 </DropdownToggle>
                 <DropdownMenu>
-                  <DropdownItem>Basic</DropdownItem>
+                  <LinkContainer to="/basic">
+                    <DropdownItem>Basic</DropdownItem>
+                  </LinkContainer>
                   <DropdownItem divider />
-                  <DropdownItem>Rational Functions</DropdownItem>
-                  <DropdownItem>Roots</DropdownItem>
-                  <DropdownItem>Logarithms</DropdownItem>
-                  <DropdownItem>Exponentials</DropdownItem>
-                  <DropdownItem>Trig Functions</DropdownItem>
+                  <LinkContainer to="/rational">
+                    <DropdownItem>Rational Functions</DropdownItem>
+                  </LinkContainer>
+                  <LinkContainer to="/roots">
+                    <DropdownItem>Roots</DropdownItem>
+                  </LinkContainer>
+                  <LinkContainer to="/logs">
+                    <DropdownItem>Logarithms</DropdownItem>
+                  </LinkContainer>
+                  <LinkContainer to="/exponentials">
+                    <DropdownItem>Exponentials</DropdownItem>
+                  </LinkContainer>
+                  <LinkContainer to="/trig">
+                    <DropdownItem>Trig Functions</DropdownItem>
+                  </LinkContainer>
                 </DropdownMenu>
               </Dropdown>
               <NavItem>
-                <NavLink href="https://github.com/jkguiang/integratable">Github</NavLink>
+                <NavLink href="https://github.com/jkguiang/integratable"><FontAwesomeIcon icon={['fab', 'github']}/> Github</NavLink>
               </NavItem>
             </Nav>
           </div>
-          <Integrals type="basic" />
-        </Container>
+        </React.Fragment>
     );
   }
+}
+
+class App extends Component {
+    render() {
+        var appStyle = {
+            minWidth: "768px"
+        }
+        return (
+            <Router>
+              <Container style={appStyle}>
+                <MainNavbar/>
+                <Route exact path="/" component={BasicIntegrals}/>
+                <Route exact path="/basic" component={BasicIntegrals}/>
+                <Route exact path="/rational" component={RationalIntegrals}/>
+                <Route exact path="/roots" component={BasicIntegrals}/>
+                <Route exact path="/logs" component={BasicIntegrals}/>
+                <Route exact path="/exponentials" component={BasicIntegrals}/>
+                <Route exact path="/trig" component={BasicIntegrals}/>
+              </Container>
+            </Router>
+        );
+    }
 }
 
 export default App;

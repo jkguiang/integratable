@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Container,
          Row, Col,
-         Jumbotron,
          Button, Progress,
          Card, CardHeader, CardBody,
          Form, FormGroup, Input,
          Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './App.css';
 import 'katex/dist/katex.min.css';
 import { InlineMath, BlockMath } from 'react-katex';
@@ -37,7 +37,7 @@ class IntegralInput extends Component {
               </Col>
               <Col md={10}>
                 <FormGroup>
-                  <Input type="text" name={this.props.constant} id={this.props.constant} onChange={this.handleInput} />
+                  <Input type="text" name={this.props.constant} id={this.props.constant} onKeyUp={this.handleInput} />
                 </FormGroup>
               </Col>
             </Row>
@@ -72,7 +72,7 @@ class IntegralCard extends Component {
         newMap[constant] = value;
         var filled = true;
         for (var c in newMap) {
-            if (typeof(newMap[c]) === "undefined" || isNaN(newMap[c])) {
+            if (typeof(newMap[c]) === "undefined" || isNaN(newMap[c]) || newMap[c] == "" || newMap[c].indexOf(" ") >= 0) {
                 filled = false;
             }
         }
@@ -104,24 +104,27 @@ class IntegralCard extends Component {
                 </Col>
                 <Col md={4} className="d-flex align-items-stretch" style={colStyle}>
                   <Card style={cardStyle}>
-                    <CardHeader className="text-center">Evaluation Parameters</CardHeader>
+                    <CardHeader className="text-center"><FontAwesomeIcon icon="calculator" /> Evaluation Parameters</CardHeader>
                     <CardBody>
                       <Form>
                         {inputs}
                       </Form>
-                      <Button outline color="success" block onClick={this.toggle} disabled={!this.state.isGood}>Submit</Button>
+                      <Button outline color={(this.state.isGood) ? "success" : "danger"} block onClick={this.toggle} disabled={!this.state.isGood}>
+                        {(this.state.isGood) ? <FontAwesomeIcon icon="check-circle" /> : <FontAwesomeIcon icon="times-circle" />} Submit
+                      </Button>
                     </CardBody>
                   </Card>
                 </Col>
               </Row>
-              <Modal isOpen={this.state.showModal} toggle={this.toggle} className="modal-lg">
+              <Modal isOpen={this.state.showModal} toggle={this.toggle} className="modal-sm">
                 <ModalHeader toggle={this.toggle}>Result</ModalHeader>
                 <ModalBody>
                   <IntegralResult query={this.props.query} constMap={this.state.constMap} />
                 </ModalBody>
                 <ModalFooter>
-                  <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
-                  <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                  <Button color="secondary" onClick={this.toggle} size="sm">
+                    <FontAwesomeIcon icon="times-circle" /> Close
+                  </Button>
                 </ModalFooter>
               </Modal>
             </React.Fragment>
@@ -185,12 +188,6 @@ class Integrals extends Component {
         );
         return (
             <Container>
-              <Jumbotron className="p-3 p-md-5 text-white rounded bg-dark">
-                <div className="col-md-6 px-0">
-                  <h1 className="display-4">Basic Integrals</h1>
-                  <p className="lead my-3 font-italic">Quick reference table with integrals one is likely to see often.</p>
-                </div>
-              </Jumbotron>
               {cards}
             </Container>
         );
