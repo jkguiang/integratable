@@ -5,6 +5,11 @@ import { Integrals } from './Integrals';
 
 const RationalDB = [
     {
+        "integral": "\\int_a^b (x+c)^n dx = \\frac{(x+c)^{n+1}}{n+1} \\textnormal{, } n \\neq -1",
+        "constants": ["a","b","c","n"],
+        "query": ["integrate ","(","x","+","c",")","^","n"," from ","a"," to ","b"]
+    },
+    {
         "integral": "\\int_a^b x(x+c)^{n} dx = \\frac{(x+c)^{n+1}((n+1)x-c)}{(n+1)(n+2)}",
         "constants": ["a","b","c","n"],
         "query": ["integrate ","x","*","(","x","+","c",")","^","n"," from ","a"," to ","b"]
