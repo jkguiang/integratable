@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { HashLink as Link } from 'react-router-hash-link';
 import { Container,
          Row, Col,
          Button, Progress,
@@ -9,7 +10,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './App.css';
 import 'katex/dist/katex.min.css';
 import { InlineMath, BlockMath } from 'react-katex';
-import IntegralDB from './IntegralDB';
 
 class IntegralInput extends Component {
     constructor(props) {
@@ -72,7 +72,7 @@ class IntegralCard extends Component {
         newMap[constant] = value;
         var filled = true;
         for (var c in newMap) {
-            if (typeof(newMap[c]) === "undefined" || isNaN(newMap[c]) || newMap[c] == "" || newMap[c].indexOf(" ") >= 0) {
+            if (typeof(newMap[c]) === "undefined" || isNaN(newMap[c]) || newMap[c] === "" || newMap[c].indexOf(" ") >= 0) {
                 filled = false;
             }
         }
@@ -95,7 +95,7 @@ class IntegralCard extends Component {
         return (
             <React.Fragment>
               <Row id={this.props.index}>
-                <Col md={8} className="" style={colStyle}>
+                <Col md={8} style={colStyle}>
                   <Card style={cardStyle}>
                     <CardBody>
                       <BlockMath math={this.props.integral} />
@@ -116,7 +116,7 @@ class IntegralCard extends Component {
                   </Card>
                 </Col>
               </Row>
-              <Modal isOpen={this.state.showModal} toggle={this.toggle} className="modal-sm">
+              <Modal isOpen={this.state.showModal} toggle={this.toggle} className="modal-lg">
                 <ModalHeader toggle={this.toggle}>Result</ModalHeader>
                 <ModalBody>
                   <IntegralResult query={this.props.query} constMap={this.state.constMap} />
@@ -183,7 +183,7 @@ class IntegralResult extends Component {
 
 class Integrals extends Component {
     render() {
-        const cards = (IntegralDB[this.props.type]).map((intObj, index) =>
+        const cards = (this.props.db).map((intObj, index) =>
             <IntegralCard integral={intObj.integral} constants={intObj.constants} query={intObj.query} key={index} index={index} />
         );
         return (
@@ -194,4 +194,28 @@ class Integrals extends Component {
     }
 }
 
-export default Integrals;
+class AllIntegrals extends Component {
+    render() {
+        var rowStyle = {
+            paddingBottom: "15px"
+        };
+        const cards = (this.props.db).map((intObj, index) =>
+              <Link smooth to={"/"+this.props.name+"#"+index}>
+                <Card>
+                  <CardBody>
+                    <BlockMath math={intObj.integral} />
+                  </CardBody>
+                </Card>
+              </Link>
+        );
+        return (
+            <Container>
+              <Row style={rowStyle}>
+                {cards}
+              </Row>
+            </Container>
+        );
+    }
+}
+
+export { Integrals, AllIntegrals };
