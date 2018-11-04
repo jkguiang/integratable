@@ -18,6 +18,9 @@ import Home from './Home';
 import { BasicIntegrals } from './BasicIntegrals';
 import { RationalIntegrals } from './RationalIntegrals';
 import { RootIntegrals } from './RootIntegrals';
+import { LogIntegrals } from './LogIntegrals';
+import { ExponentialIntegrals } from './ExponentialIntegrals';
+import { TrigIntegrals } from './TrigIntegrals';
 
 // Load icons
 library.add(
@@ -112,9 +115,11 @@ class App extends Component {
                 <Route exact path="/basic" component={BasicIntegrals}/>
                 <Route exact path="/rational" component={RationalIntegrals}/>
                 <Route exact path="/roots" component={RootIntegrals}/>
-                <Route exact path="/logs" component={BasicIntegrals}/>
-                <Route exact path="/exponentials" component={BasicIntegrals}/>
-                <Route exact path="/trig" component={BasicIntegrals}/>
+                <Route exact path="/logs" component={LogIntegrals}/>
+                <Route exact path="/exponentials" component={ExponentialIntegrals}/>
+                <Route exact path="/trig" component={TrigIntegrals}/>
+                <hr/>
+                <p clasName="text-muted">Last Updated: Nov. 4th, 2018</p>
               </Container>
             </Router>
         );

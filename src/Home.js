@@ -5,6 +5,9 @@ import { AllIntegrals } from './Integrals';
 import { BasicDB } from './BasicIntegrals';
 import { RationalDB } from './RationalIntegrals';
 import { RootDB } from './RootIntegrals';
+import { LogDB } from './LogIntegrals';
+import { ExponentialDB } from './ExponentialIntegrals';
+import { TrigDB } from './TrigIntegrals';
 
 class Home extends Component {
       render() {
@@ -22,6 +25,12 @@ class Home extends Component {
                 <AllIntegrals name="rational" db={RationalDB} />
                 <h4>Root Integrals</h4><hr/>
                 <AllIntegrals name="roots" db={RootDB} />
+                <h4>Logarithm Integrals</h4><hr/>
+                <AllIntegrals name="logs" db={LogDB} />
+                <h4>Exponential Integrals</h4><hr/>
+                <AllIntegrals name="exponentials" db={ExponentialDB} />
+                <h4>Trigonometry Integrals</h4><hr/>
+                <AllIntegrals name="trig" db={TrigDB} />
               </React.Fragment>
           );
       }
