@@ -13,9 +13,11 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Container } from 'reactstrap';
 import './App.css';
-import Integrals from './Integrals';
 import { Nav, NavItem, Dropdown, DropdownItem, DropdownToggle, DropdownMenu, NavLink } from 'reactstrap';
-import { BasicIntegrals, RationalIntegrals } from './Pages';
+import Home from './Home';
+import { BasicIntegrals } from './BasicIntegrals';
+import { RationalIntegrals } from './RationalIntegrals';
+import { RootIntegrals } from './RootIntegrals';
 
 // Load icons
 library.add(
@@ -106,10 +108,10 @@ class App extends Component {
             <Router>
               <Container style={appStyle}>
                 <MainNavbar/>
-                <Route exact path="/" component={BasicIntegrals}/>
+                <Route exact path="/" component={Home}/>
                 <Route exact path="/basic" component={BasicIntegrals}/>
                 <Route exact path="/rational" component={RationalIntegrals}/>
-                <Route exact path="/roots" component={BasicIntegrals}/>
+                <Route exact path="/roots" component={RootIntegrals}/>
                 <Route exact path="/logs" component={BasicIntegrals}/>
                 <Route exact path="/exponentials" component={BasicIntegrals}/>
                 <Route exact path="/trig" component={BasicIntegrals}/>
