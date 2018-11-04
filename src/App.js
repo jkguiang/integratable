@@ -24,8 +24,11 @@ class App extends Component {
           paddingTop: "5px",
           paddingBottom: "15px"
       }
+      var appStyle = {
+          minWidth: "768px"
+      }
     return (
-        <Container>
+        <Container style={appStyle}>
           <header className="blog-header py-3">
             <div className="text-center">
               <a className="blog-header-logo text-dark" href="#">Integratable</a>
