@@ -5,16 +5,25 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import {
   faCalculator,
-  faAngleDoubleRight,
+  faAngleDown,
+  faAngleUp,
   faHome,
   faCheckCircle,
   faExternalLinkSquareAlt,
-  faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+  faTimesCircle,
+  faHeart,
+  faInfoCircle,
+  faGrin,
+  faGrinHearts,
+  faHands,
+  faStreetView } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Container } from 'reactstrap';
 import './App.css';
 import { Nav, NavItem, Dropdown, DropdownItem, DropdownToggle, DropdownMenu, NavLink } from 'reactstrap';
 import Home from './Home';
+import About from './About';
+import Donate from './Donate';
 import { BasicIntegrals } from './BasicIntegrals';
 import { RationalIntegrals } from './RationalIntegrals';
 import { RootIntegrals } from './RootIntegrals';
@@ -26,11 +35,18 @@ import { TrigIntegrals } from './TrigIntegrals';
 library.add(
   fab,
   faCalculator,
-  faAngleDoubleRight,
+  faAngleDown,
+  faAngleUp,
   faHome,
   faCheckCircle,
   faExternalLinkSquareAlt,
-  faTimesCircle );
+  faTimesCircle,
+  faHeart,
+  faInfoCircle,
+  faGrin,
+  faGrinHearts,
+  faHands,
+  faStreetView );
 
 class MainNavbar extends Component {
     constructor(props) {
@@ -55,12 +71,19 @@ class MainNavbar extends Component {
     return (
         <React.Fragment>
           <header className="blog-header py-3">
-            <div className="text-center">
-              <a className="blog-header-logo text-dark" href="#">Integratable</a>
-            </div>
+            <LinkContainer to="/">
+              <div className="text-center">
+                <a className="blog-header-logo text-dark" href="/">Integratable</a>
+              </div>
+            </LinkContainer>
           </header>
           <div style={navStyle}>
             <Nav pills className="justify-content-center">
+              <LinkContainer to="/about">
+                <NavItem>
+                  <NavLink href="/about"><FontAwesomeIcon icon="info-circle" /> About</NavLink>
+                </NavItem>
+              </LinkContainer>
               <LinkContainer to="/">
                 <NavItem>
                   <NavLink href="/"><FontAwesomeIcon icon="home" /> Home</NavLink>
@@ -95,6 +118,11 @@ class MainNavbar extends Component {
               <NavItem>
                 <NavLink href="https://github.com/jkguiang/integratable"><FontAwesomeIcon icon={['fab', 'github']}/> Github</NavLink>
               </NavItem>
+              <LinkContainer to="/donate">
+                <NavItem>
+                  <NavLink href="/donate"><FontAwesomeIcon icon="heart" /> Donate</NavLink>
+                </NavItem>
+              </LinkContainer>
             </Nav>
           </div>
         </React.Fragment>
@@ -118,8 +146,10 @@ class App extends Component {
                 <Route exact path="/logs" component={LogIntegrals}/>
                 <Route exact path="/exponentials" component={ExponentialIntegrals}/>
                 <Route exact path="/trig" component={TrigIntegrals}/>
+                <Route exact path="/about" component={About}/>
+                <Route exact path="/donate" component={Donate}/>
                 <hr/>
-                <p clasName="text-muted">Last Updated: Nov. 4th, 2018</p>
+                <p className="text-muted">Last Updated: Nov. 4th, 2018</p>
               </Container>
             </Router>
         );
