@@ -58,7 +58,7 @@ class RootIntegrals extends Component {
                 <Jumbotron className="p-3 p-md-5 text-white rounded bg-dark">
                   <div className="col-md-6 px-0">
                     <h1 className="display-4">Root Integrals</h1>
-                    <p className="lead my-3 font-italic">Quick reference table with integrals one is likely to see often.</p>
+                    <p className="lead my-3 font-italic">Integrals involving fractional powers in inconvenient places.</p>
                   </div>
                 </Jumbotron>
                 <Integrals db={RootDB} />
