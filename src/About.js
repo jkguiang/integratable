@@ -27,7 +27,7 @@ class About extends Component {
                   <h2><FontAwesomeIcon icon="heart" /> How can I help?</h2>
                   <hr/>
                   <p>
-                  As mentioned at the top, Integratable is a non-profit organization. We are always looking for charitable individuals to help us make Integratable a better service. However, moving this website to more scalable backend technologies is not very expensive. Thus, should we garner enough support, we plan to direct the generosity of our patrons to worthy causes with a focus on furthering the extent and equity of education. For more information, please visit our <a href="https://www.patreon.com/integratable">Patreon page</a>. All of the names of our patrons can be found on the Donate page.
+                  As mentioned at the top, Integratable is a non-profit organization. We are always looking for charitable individuals to help us make Integratable a better service. However, moving this website to more scalable backend technologies is not very expensive. Thus, should we garner enough support, we plan to direct the generosity of our patrons to worthy causes with a focus on furthering the extent and equity of education. For more information, please visit our <a href="https://www.patreon.com/integratable">Patreon page</a>. All of the names of our patrons can be found on the <a href="https://www.integratable.info/#/donate">Donate</a> page.
                   </p>
                 </Container>
               </React.Fragment>

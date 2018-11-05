@@ -40,10 +40,10 @@ class Donate extends Component {
                   <ul>
                     <li><i>For $10 a month, you can become the first Integral Devotee!</i></li>
                   </ul>
-                  <h5><FontAwesomeIcon icon="street-view" /> Integral Dieties</h5>
+                  <h5><FontAwesomeIcon icon="street-view" /> Integral Deities</h5>
                   <p className="text-muted"><i>"Non-etherial being that contributed to the inscription of the Fundamental Theorem of Calculus unto the mortal plane. Operates as the infinite sum of individual, differential consciousnesses."</i></p>
                   <ul>
-                    <li><i>For $20 a month, you can become the first Integral Diety!</i></li>
+                    <li><i>For $20 a month, you can become the first Integral Deity!</i></li>
                   </ul>
                 </Container>
               </React.Fragment>
