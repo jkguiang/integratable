@@ -3,6 +3,7 @@ import { HashLink as Link } from 'react-router-hash-link';
 import { Container,
          Row, Col,
          Button, Progress,
+         Collapse,
          Card, CardHeader, CardBody,
          Form, FormGroup, Input,
          Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
@@ -195,12 +196,22 @@ class Integrals extends Component {
 }
 
 class AllIntegrals extends Component {
+    constructor(props) {
+        super(props);
+        this.toggleCollapse = this.toggleCollapse.bind(this);
+        this.state = {
+            isCollapsed: false
+        };
+    }
+    toggleCollapse() {
+        this.setState({isCollapsed: !this.state.isCollapsed});
+    }
     render() {
         var rowStyle = {
             paddingBottom: "15px"
         };
         const cards = (this.props.db).map((intObj, index) =>
-              <Link smooth to={"/"+this.props.name+"#"+index}>
+              <Link smooth to={"/"+this.props.name+"#"+index} key={index}>
                 <Card>
                   <CardBody>
                     <BlockMath math={intObj.integral} />
@@ -209,11 +220,19 @@ class AllIntegrals extends Component {
               </Link>
         );
         return (
-            <Container>
-              <Row style={rowStyle}>
-                {cards}
-              </Row>
-            </Container>
+            <React.Fragment>
+              <Button block outline color="secondary" style={{ marginBottom: '1rem' }} onClick={this.toggleCollapse}>
+                <h4>{this.props.header} {(this.state.isCollapsed) ? <FontAwesomeIcon icon="angle-down" /> : <FontAwesomeIcon icon="angle-up" />}</h4>
+              </Button>
+              <Container>
+                <Collapse isOpen={!this.state.isCollapsed}>
+                  <hr/>
+                  <Row style={rowStyle}>
+                    {cards}
+                  </Row>
+                </Collapse>
+              </Container>
+            </React.Fragment>
         );
     }
 }
