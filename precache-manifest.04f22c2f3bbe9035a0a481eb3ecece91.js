@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/static/media/KaTeX_Fraktur-Regular.c5b430bf.woff"
   },
   {
-    "revision": "68f75a94ac257dadc707",
+    "revision": "a3f689562eb4bbdc8f3f",
     "url": "/static/css/main.8f3aa665.chunk.css"
   },
   {
@@ -60,12 +60,12 @@ self.__precacheManifest = [
     "url": "/static/media/KaTeX_Caligraphic-Bold.445f96a3.woff"
   },
   {
-    "revision": "0ef0f2e356a2e1c457b6585d34edae77",
-    "url": "/static/media/KaTeX_Caligraphic-Regular.0ef0f2e3.woff2"
-  },
-  {
     "revision": "74f6918c7d2b768ffd32048102bc0172",
     "url": "/static/media/KaTeX_Caligraphic-Regular.74f6918c.woff"
+  },
+  {
+    "revision": "0ef0f2e356a2e1c457b6585d34edae77",
+    "url": "/static/media/KaTeX_Caligraphic-Regular.0ef0f2e3.woff2"
   },
   {
     "revision": "e38d0f6844b9520510715fd989bdd5bd",
@@ -124,8 +124,8 @@ self.__precacheManifest = [
     "url": "/static/media/KaTeX_Fraktur-Regular.135ccd74.woff2"
   },
   {
-    "revision": "68f75a94ac257dadc707",
-    "url": "/static/js/main.68f75a94.chunk.js"
+    "revision": "a3f689562eb4bbdc8f3f",
+    "url": "/static/js/main.a3f68956.chunk.js"
   },
   {
     "revision": "0719833c23aeba83786a29e84a165875",
@@ -188,12 +188,12 @@ self.__precacheManifest = [
     "url": "/static/media/KaTeX_Script-Regular.e9169ca7.ttf"
   },
   {
-    "revision": "ac1d46d953d403677171697581a284d2",
-    "url": "/static/media/KaTeX_AMS-Regular.ac1d46d9.woff"
-  },
-  {
     "revision": "3d8245dcb4489694a6a263b05c1cca01",
     "url": "/static/media/KaTeX_AMS-Regular.3d8245dc.woff2"
+  },
+  {
+    "revision": "ac1d46d953d403677171697581a284d2",
+    "url": "/static/media/KaTeX_AMS-Regular.ac1d46d9.woff"
   },
   {
     "revision": "e11e6bf02fc41279a540d3655abf3b07",
@@ -208,12 +208,12 @@ self.__precacheManifest = [
     "url": "/static/media/KaTeX_Main-Bold.0ba875a1.woff"
   },
   {
-    "revision": "1fd21713706a2b70960faf21b1fa4e26",
-    "url": "/static/media/KaTeX_Main-Regular.1fd21713.woff"
-  },
-  {
     "revision": "29b27903a08a71f8171be21ba413d4dd",
     "url": "/static/media/KaTeX_Main-Regular.29b27903.woff2"
+  },
+  {
+    "revision": "1fd21713706a2b70960faf21b1fa4e26",
+    "url": "/static/media/KaTeX_Main-Regular.1fd21713.woff"
   },
   {
     "revision": "9123667cef81279761df5cd62ec8c46e",
@@ -248,7 +248,7 @@ self.__precacheManifest = [
     "url": "/static/css/1.438c7e08.chunk.css"
   },
   {
-    "revision": "c2a68e1313091dac56130a69a5aff3e8",
+    "revision": "b2fd9aaa8ea351b626062f994a8ad9f4",
     "url": "/index.html"
   }
 ];
