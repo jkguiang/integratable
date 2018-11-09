@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/static/media/KaTeX_Fraktur-Regular.c5b430bf.woff"
   },
   {
-    "revision": "4186c8874227f5dc1306",
+    "revision": "68f75a94ac257dadc707",
     "url": "/static/css/main.8f3aa665.chunk.css"
   },
   {
@@ -124,8 +124,8 @@ self.__precacheManifest = [
     "url": "/static/media/KaTeX_Fraktur-Regular.135ccd74.woff2"
   },
   {
-    "revision": "4186c8874227f5dc1306",
-    "url": "/static/js/main.4186c887.chunk.js"
+    "revision": "68f75a94ac257dadc707",
+    "url": "/static/js/main.68f75a94.chunk.js"
   },
   {
     "revision": "0719833c23aeba83786a29e84a165875",
@@ -164,16 +164,16 @@ self.__precacheManifest = [
     "url": "/static/media/KaTeX_Typewriter-Regular.ba01f72a.woff"
   },
   {
-    "revision": "bb7c45db8908c8fb88a293895a64e018",
-    "url": "/static/media/KaTeX_Main-Italic.bb7c45db.woff"
+    "revision": "c5b67fb3f6bdaa7f2dd75e5bc8d929eb",
+    "url": "/static/media/KaTeX_Main-Bold.c5b67fb3.woff2"
   },
   {
     "revision": "5aeca883bc41b522fdf1409ee912b51c",
     "url": "/static/media/KaTeX_Main-BoldItalic.5aeca883.woff"
   },
   {
-    "revision": "c5b67fb3f6bdaa7f2dd75e5bc8d929eb",
-    "url": "/static/media/KaTeX_Main-Bold.c5b67fb3.woff2"
+    "revision": "bb7c45db8908c8fb88a293895a64e018",
+    "url": "/static/media/KaTeX_Main-Italic.bb7c45db.woff"
   },
   {
     "revision": "f9c440abdd25c5a954d855516fed39f9",
@@ -188,12 +188,12 @@ self.__precacheManifest = [
     "url": "/static/media/KaTeX_Script-Regular.e9169ca7.ttf"
   },
   {
-    "revision": "3d8245dcb4489694a6a263b05c1cca01",
-    "url": "/static/media/KaTeX_AMS-Regular.3d8245dc.woff2"
-  },
-  {
     "revision": "ac1d46d953d403677171697581a284d2",
     "url": "/static/media/KaTeX_AMS-Regular.ac1d46d9.woff"
+  },
+  {
+    "revision": "3d8245dcb4489694a6a263b05c1cca01",
+    "url": "/static/media/KaTeX_AMS-Regular.3d8245dc.woff2"
   },
   {
     "revision": "e11e6bf02fc41279a540d3655abf3b07",
@@ -248,7 +248,7 @@ self.__precacheManifest = [
     "url": "/static/css/1.438c7e08.chunk.css"
   },
   {
-    "revision": "c239ece47425f79e5e92e392b5c144e6",
+    "revision": "c2a68e1313091dac56130a69a5aff3e8",
     "url": "/index.html"
   }
 ];
