@@ -84,6 +84,7 @@ class IntegralCard extends Component {
     }
     render() {
         var url = (window.location.href.split("#"));
+        var base = (url.length < 3) ? window.location.href : (window.location.href).split("#"+url[url.length-1])[0];
         var colStyle = {
             paddingBottom: "15px"
         };
@@ -114,9 +115,16 @@ class IntegralCard extends Component {
                       <Form>
                         {inputs}
                       </Form>
+                      <Row>
+                      <Col md={2}>
+                      <Button color="link" href={base+"#"+this.props.index}><FontAwesomeIcon icon="anchor" /></Button>
+                      </Col>
+                      <Col md={10}>
                       <Button outline color={(this.state.isGood) ? "success" : "danger"} block onClick={this.toggle} disabled={!this.state.isGood}>
                         {(this.state.isGood) ? <FontAwesomeIcon icon="check-circle" /> : <FontAwesomeIcon icon="times-circle" />} Submit
                       </Button>
+                      </Col>
+                      </Row>
                     </CardBody>
                   </Card>
                 </Col>
