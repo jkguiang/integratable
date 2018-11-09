@@ -83,21 +83,25 @@ class IntegralCard extends Component {
         });
     }
     render() {
+        var url = (window.location.href.split("#"));
         var colStyle = {
             paddingBottom: "15px"
         };
         var cardStyle = {
-            width: "100%"
+            width: "100%",
+        };
+        var anchorStyle = {
+            width: "100%",
+            borderColor: "#000"
         };
         const inputs = (this.props.constants).map((constant, index) =>
             <IntegralInput constant={constant} key={index+10} update={this.updateMap}/>
         );
-
         return (
             <React.Fragment>
               <Row id={this.props.index}>
                 <Col md={8} style={colStyle}>
-                  <Card style={cardStyle}>
+                  <Card style={(url[url.length-1] === String(this.props.index)) ? anchorStyle : cardStyle}>
                     <CardBody>
                       <BlockMath math={this.props.integral} />
                     </CardBody>
