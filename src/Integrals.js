@@ -85,15 +85,19 @@ class IntegralCard extends Component {
     render() {
         var url = (window.location.href.split("#"));
         var base = (url.length < 3) ? window.location.href : (window.location.href).split("#"+url[url.length-1])[0];
+        var isAnchored = (url[url.length-1] === String(this.props.index));
         var colStyle = {
             paddingBottom: "15px"
         };
         var cardStyle = {
             width: "100%",
         };
-        var anchorStyle = {
+        var anchoredStyle = {
             width: "100%",
             borderColor: "#000"
+        };
+        var anchorStyle = {
+            color: "#5cb85c"
         };
         const inputs = (this.props.constants).map((constant, index) =>
             <IntegralInput constant={constant} key={index+10} update={this.updateMap}/>
@@ -102,7 +106,7 @@ class IntegralCard extends Component {
             <React.Fragment>
               <Row id={this.props.index}>
                 <Col md={8} style={colStyle}>
-                  <Card style={(url[url.length-1] === String(this.props.index)) ? anchorStyle : cardStyle}>
+                  <Card style={(isAnchored) ? anchoredStyle : cardStyle}>
                     <CardBody>
                       <BlockMath math={this.props.integral} />
                     </CardBody>
@@ -116,14 +120,16 @@ class IntegralCard extends Component {
                         {inputs}
                       </Form>
                       <Row>
-                      <Col md={2}>
-                      <Button color="link" href={base+"#"+this.props.index}><FontAwesomeIcon icon="anchor" /></Button>
-                      </Col>
-                      <Col md={10}>
-                      <Button outline color={(this.state.isGood) ? "success" : "danger"} block onClick={this.toggle} disabled={!this.state.isGood}>
-                        {(this.state.isGood) ? <FontAwesomeIcon icon="check-circle" /> : <FontAwesomeIcon icon="times-circle" />} Submit
-                      </Button>
-                      </Col>
+                        <Col md={2}>
+                          <Button color="link" href={base+"#"+this.props.index} style={(isAnchored) ? anchorStyle : {}}>
+                            <FontAwesomeIcon icon="anchor" />
+                          </Button>
+                        </Col>
+                        <Col md={10}>
+                          <Button outline color={(this.state.isGood) ? "success" : "danger"} block onClick={this.toggle} disabled={!this.state.isGood}>
+                          {(this.state.isGood) ? <FontAwesomeIcon icon="check-circle" /> : <FontAwesomeIcon icon="times-circle"   />} Submit
+                          </Button>
+                        </Col>
                       </Row>
                     </CardBody>
                   </Card>
