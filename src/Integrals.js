@@ -170,9 +170,29 @@ class IntegralResult extends Component {
 	    return "\\textnormal{Result is too long to compute.}";
 	}
 	else {
+	    const constNeighbors = ["+","-","_","^","x"];
 	    var result = splitResp[0]+"."+splitResp[1].slice(0,5)+order;
-	    var evaluate = (this.props.integral).split(" = ")[0];
-	    return `${evaluate} = ${result}`;
+	    const indef = (this.props.integral).split(" = ")[0];
+	    var definite = "";
+	    for (var i in indef) {
+		i = Number(i);
+		var c = indef[i];
+		if (this.props.constMap.hasOwnProperty(c)) {
+		    if (i !== indef.length-1 && constNeighbors.includes(indef[i+1])) {
+		        definite += this.props.constMap[c];
+		    }
+		    else if (i !== 0 && constNeighbors.includes(indef[i-1])) {
+		        definite += this.props.constMap[c];
+		    }
+		    else {
+			definite += c;
+		    }
+		}
+		else {
+		    definite += c;
+		}
+	    }
+	    return `${definite} = ${result}`;
 	}
     }
     buildQuery() {
@@ -209,7 +229,6 @@ class IntegralResult extends Component {
         });
         const body = await response.text();
         if (response.status !== 200) throw Error(body.message);
-        console.log(body);
         return body;
     };
     render() {
