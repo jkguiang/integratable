@@ -138,7 +138,7 @@ class IntegralCard extends Component {
               <Modal isOpen={this.state.showModal} toggle={this.toggle} className="modal-lg">
                 <ModalHeader toggle={this.toggle}>Result</ModalHeader>
                 <ModalBody>
-                  <IntegralResult query={this.props.query} constMap={this.state.constMap} />
+                  <IntegralResult integral={this.props.integral} query={this.props.query} constMap={this.state.constMap} />
                 </ModalBody>
                 <ModalFooter>
                   <Button color="secondary" onClick={this.toggle} size="sm">
@@ -155,37 +155,68 @@ class IntegralResult extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            result: ""
+            response: ""
         };
     }
     componentDidMount() {
-        var x = new XMLHttpRequest();
-        var waQuery = "";
+        this.callApi()
+          .then(resp => this.setState({ response: this.buildResponse(resp) }))
+          .catch(err => console.log(err));
+    }
+    buildResponse(resp) {
+	var splitResp = (resp.replace(/\s/g,'')).split(".").join(",").split("E").join(",").split(",");
+	var order = (splitResp.length > 2) ? "\\times 10^{"+splitResp[2]+"}" : "";
+	if (splitResp[1] === "nf") {
+	    return "\\textnormal{Result is too long to compute.}";
+	}
+	else {
+	    var result = splitResp[0]+"."+splitResp[1].slice(0,5)+order;
+	    var evaluate = (this.props.integral).split(" = ")[0];
+	    return `${evaluate} = ${result}`;
+	}
+    }
+    buildQuery() {
+	var newQuery = {
+	    "integrate": "",
+	    "from": "",
+	    "to": ""
+	};
+	var fill = "";
         for (var i in this.props.query) {
             var q = this.props.query[i];
-            if (this.props.constMap.hasOwnProperty(q)) {
-                waQuery += this.props.constMap[q];
-            }
-            else {
-                waQuery += encodeURIComponent(q);
-            }
+	    if (newQuery.hasOwnProperty(q)) {
+		fill = q;
+	    }
+	    else {
+	        if (this.props.constMap.hasOwnProperty(q)) {
+	            newQuery[fill] += this.props.constMap[q];
+	        }
+	        else {
+	            newQuery[fill] += q;
+	        }
+	    }
         }
-        console.log(waQuery);
-        const scope = this;
-        x.open("GET", `https://cors-anywhere.herokuapp.com/http://api.wolframalpha.com/v2/query?appid=P5HRRU-GRAQ5ALWWL&input=${waQuery}&podtitle=Definite+integral&format=image&output=json`, true);
-        console.log(x);
-        x.onload = x.onerror = function() {
-            var response = JSON.parse(x.responseText);
-            console.log(response.queryresult.pods[0].subpods[0].img);
-            scope.setState({result:response.queryresult.pods[0].subpods[0].img.src});
-        }
-        x.send();
+	return newQuery;
     }
+    callApi = async() => {
+	const newQuery = this.buildQuery();
+        const response = await fetch('/api/integrate', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newQuery),
+        });
+        const body = await response.text();
+        if (response.status !== 200) throw Error(body.message);
+        console.log(body);
+        return body;
+    };
     render() {
-        if (this.state.result !== "") {
+        if (this.state.response !== "") {
             return (
                 <React.Fragment>
-                  <img src={this.state.result} alt="missing"/>
+                  <BlockMath math={this.state.response} />
                 </React.Fragment>
             );
         }
@@ -196,7 +227,6 @@ class IntegralResult extends Component {
                 </React.Fragment>
             );
         }
-
     }
 }
 
