@@ -7,42 +7,42 @@ const RationalDB = [
     {
         "integral": "\\int_a^b (x+c)^n dx = \\frac{(x+c)^{n+1}}{n+1} \\textnormal{, } n \\neq -1",
         "constants": ["a","b","c","n"],
-        "query": ["integrate ","(","x","+","c",")","^","n"," from ","a"," to ","b"]
+        "query": ["integrate","(","x","+","c",")","^","n","from","a","to","b"]
     },
     {
-        "integral": "\\int_a^b x(x+c)^{n} dx = \\frac{(x+c)^{n+1}((n+1)x-c)}{(n+1)(n+2)}",
+        "integral": "\\int_a^b x(x+c)^n dx = \\frac{(x+c)^{n+1}((n+1)x-c)}{(n+1)(n+2)}",
         "constants": ["a","b","c","n"],
-        "query": ["integrate ","x","*","(","x","+","c",")","^","n"," from ","a"," to ","b"]
+        "query": ["integrate","x","*","(","x","+","c",")","^","n","from","a","to","b"]
     },
     {
         "integral": "\\int_a^b \\frac{1}{1+x^2} dx = \\tan^{-1}(x)",
         "constants": ["a","b"],
-        "query": ["integrate ","1","/","(","1","+","x","^","2",")"," from ","a"," to ","b"]
+        "query": ["integrate","1","/","(","1","+","x","^","2",")","from","a","to","b"]
     },
     {
         "integral": "\\int_a^b \\frac{1}{c^2+x^2} dx = \\frac{1}{c}\\tan^{-1}\\biggr(\\frac{x}{c}\\biggr)",
         "constants": ["a","b","c"],
-        "query": ["integrate ","1","/","(","c","^","2","+","x","^","2",")"," from ","a"," to ","b"]
+        "query": ["integrate","1","/","(","c","^","2","+","x","^","2",")","from","a","to","b"]
     },
     {
         "integral": "\\int_a^b \\frac{x}{c^2+x^2} dx = \\frac{1}{2}\\ln{\\biggr\\rvert c^2 + x^2 \\biggr\\rvert}",
         "constants": ["a","b","c"],
-        "query": ["integrate ","x","/","(","c","^","2","+","x","^","2",")"," from ","a"," to ","b"]
+        "query": ["integrate","x","/","(","c","^","2","+","x","^","2",")","from","a","to","b"]
     },
     {
         "integral": "\\int_a^b \\frac{x^2}{c^2+x^2} dx = x-c\\tan^{-1}\\biggr(\\frac{x}{c}\\biggr)",
         "constants": ["a","b","c"],
-        "query": ["integrate ","(","x","^","2",")","/","(","c","^","2","+","x","^","2",")"," from ","a"," to ","b"]
+        "query": ["integrate","(","x","^","2",")","/","(","c","^","2","+","x","^","2",")","from","a","to","b"]
     },
     {
         "integral": "\\int_a^b \\frac{x^3}{c^2+x^2} dx = \\frac{1}{2}x^2-\\frac{1}{2}c^2\\ln{\\biggr\\rvert c^2 + x^2 \\biggr\\rvert}",
         "constants": ["a","b","c"],
-        "query": ["integrate ","(","x","^","3",")","/","(","c","^","2","+","x","^","2",")"," from ","a"," to ","b"]
+        "query": ["integrate","(","x","^","3",")","/","(","c","^","2","+","x","^","2",")","from","a","to","b"]
     },
     {
         "integral": "\\int_a^b \\frac{1}{Ax^2+Bx+C} dx = \\frac{2}{\\sqrt{4AC-B^2}}\\tan^{-1}\\biggr(\\frac{2Ax+B}{\\sqrt{4AC+B^2}}\\biggr)",
         "constants": ["a","b","A","B","C"],
-        "query": ["integrate ","1","/","(","A","x","^","2","+","B","x","+","C" ,")"," from ","a"," to ","b"]
+        "query": ["integrate","1","/","(","A","*","x","^","2","+","B","*","x","+","C" ,")","from","a","to","b"]
     }
 ];
 

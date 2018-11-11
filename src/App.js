@@ -27,7 +27,7 @@ import About from './About';
 import Donate from './Donate';
 import { BasicIntegrals } from './BasicIntegrals';
 import { RationalIntegrals } from './RationalIntegrals';
-import { RootIntegrals } from './RootIntegrals';
+import { RadicalIntegrals } from './RadicalIntegrals';
 import { LogIntegrals } from './LogIntegrals';
 import { ExponentialIntegrals } from './ExponentialIntegrals';
 import { TrigIntegrals } from './TrigIntegrals';
@@ -103,8 +103,8 @@ class MainNavbar extends Component {
                   <LinkContainer to="/rational">
                     <DropdownItem>Rational Functions</DropdownItem>
                   </LinkContainer>
-                  <LinkContainer to="/roots">
-                    <DropdownItem>Roots</DropdownItem>
+                  <LinkContainer to="/radical">
+                    <DropdownItem>Radicals</DropdownItem>
                   </LinkContainer>
                   <LinkContainer to="/logs">
                     <DropdownItem>Logarithms</DropdownItem>
@@ -144,7 +144,7 @@ class App extends Component {
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/basic" component={BasicIntegrals}/>
                 <Route exact path="/rational" component={RationalIntegrals}/>
-                <Route exact path="/roots" component={RootIntegrals}/>
+                <Route exact path="/radical" component={RadicalIntegrals}/>
                 <Route exact path="/logs" component={LogIntegrals}/>
                 <Route exact path="/exponentials" component={ExponentialIntegrals}/>
                 <Route exact path="/trig" component={TrigIntegrals}/>

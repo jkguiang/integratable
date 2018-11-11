@@ -4,7 +4,7 @@ import './App.css';
 import { AllIntegrals } from './Integrals';
 import { BasicDB } from './BasicIntegrals';
 import { RationalDB } from './RationalIntegrals';
-import { RootDB } from './RootIntegrals';
+import { RadicalDB } from './RadicalIntegrals';
 import { LogDB } from './LogIntegrals';
 import { ExponentialDB } from './ExponentialIntegrals';
 import { TrigDB } from './TrigIntegrals';
@@ -21,7 +21,7 @@ class Home extends Component {
                 </Jumbotron>
                 <AllIntegrals header="Basic" name="basic" db={BasicDB} />
                 <AllIntegrals header="Rational Functions" name="rational" db={RationalDB} />
-                <AllIntegrals header="Roots" name="roots" db={RootDB} />
+                <AllIntegrals header="Radicals" name="radical" db={RadicalDB} />
                 <AllIntegrals header="Logarithms" name="logs" db={LogDB} />
                 <AllIntegrals header="Exponentials" name="exponentials" db={ExponentialDB} />
                 <AllIntegrals header="Trig Functions" name="trig" db={TrigDB} />

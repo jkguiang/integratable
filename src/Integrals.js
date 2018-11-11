@@ -164,6 +164,10 @@ class IntegralResult extends Component {
           .catch(err => console.log(err));
     }
     buildResponse(resp) {
+	if (String(resp).includes("\n")) {
+	    console.log("found newlines!");
+	    console.log(String(resp).split("\n"));
+	}
 	var splitResp = (resp.replace(/\s/g,'')).split(".").join(",").split("E").join(",").split(",");
 	var order = (splitResp.length > 2) ? "\\times 10^{"+splitResp[2]+"}" : "";
 	if (splitResp[1] === "nf") {
@@ -219,6 +223,7 @@ class IntegralResult extends Component {
 	return newQuery;
     }
     callApi = async() => {
+	console.log("calling API");
 	const newQuery = this.buildQuery();
         const response = await fetch('/api/integrate', {
           method: 'POST',
@@ -229,6 +234,7 @@ class IntegralResult extends Component {
         });
         const body = await response.text();
         if (response.status !== 200) throw Error(body.message);
+	console.log(body);
         return body;
     };
     render() {
