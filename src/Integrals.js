@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './App.css';
 import 'katex/dist/katex.min.css';
 import { InlineMath, BlockMath } from 'react-katex';
+import { Evaluate } from './Evaluate';
 
 class IntegralInput extends Component {
     constructor(props) {
@@ -108,7 +109,7 @@ class IntegralCard extends Component {
                 <Col md={8} style={colStyle}>
                   <Card style={(isAnchored) ? anchoredStyle : cardStyle}>
                     <CardBody>
-                      <BlockMath math={this.props.integral} />
+                      <BlockMath math={this.props.integral+"\\biggr|_{x=a}^{x=b}"+this.props.restrict} />
                     </CardBody>
                   </Card>
                 </Col>
@@ -159,84 +160,46 @@ class IntegralResult extends Component {
         };
     }
     componentDidMount() {
-        this.callApi()
-          .then(resp => this.setState({ response: this.buildResponse(resp) }))
-          .catch(err => console.log(err));
-    }
-    buildResponse(resp) {
-	if (String(resp).includes("\n")) {
-	    console.log("found newlines!");
-	    console.log(String(resp).split("\n"));
-	}
-	var splitResp = (resp.replace(/\s/g,'')).split(".").join(",").split("E").join(",").split(",");
-	var order = (splitResp.length > 2) ? "\\times 10^{"+splitResp[2]+"}" : "";
-	if (splitResp[1] === "nf") {
-	    return "\\textnormal{Result is too long to compute.}";
-	}
-	else {
-	    const constNeighbors = ["+","-","_","^","x"];
-	    var result = splitResp[0]+"."+splitResp[1].slice(0,5)+order;
-	    const indef = (this.props.integral).split(" = ")[0];
-	    var definite = "";
-	    for (var i in indef) {
-		i = Number(i);
-		var c = indef[i];
-		if (this.props.constMap.hasOwnProperty(c)) {
-		    if (i !== indef.length-1 && constNeighbors.includes(indef[i+1])) {
-		        definite += this.props.constMap[c];
-		    }
-		    else if (i !== 0 && constNeighbors.includes(indef[i-1])) {
-		        definite += this.props.constMap[c];
-		    }
-		    else {
-			definite += c;
-		    }
-		}
-		else {
-		    definite += c;
-		}
-	    }
-	    return `${definite} = ${result}`;
-	}
-    }
-    buildQuery() {
-	var newQuery = {
-	    "integrate": "",
-	    "from": "",
-	    "to": ""
-	};
-	var fill = "";
-        for (var i in this.props.query) {
-            var q = this.props.query[i];
-	    if (newQuery.hasOwnProperty(q)) {
-		fill = q;
-	    }
-	    else {
-	        if (this.props.constMap.hasOwnProperty(q)) {
-	            newQuery[fill] += this.props.constMap[q];
-	        }
-	        else {
-	            newQuery[fill] += q;
-	        }
-	    }
+        console.log(this.props.query);
+        var query = (this.props.query).split(" ");
+        for (var i in query) {
+            var c = query[i];
+            if (this.props.constMap.hasOwnProperty(c)){
+                query[i] = this.props.constMap[c];
+            }
         }
-	return newQuery;
+        var result = Evaluate(query, [this.props.constMap["a"], this.props.constMap["b"]]);
+        this.setState({response: this.buildResponse(result)});
     }
-    callApi = async() => {
-	console.log("calling API");
-	const newQuery = this.buildQuery();
-        const response = await fetch('/api/integrate', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(newQuery),
-        });
-        const body = await response.text();
-        if (response.status !== 200) throw Error(body.message);
-	console.log(body);
-        return body;
-    };
+    buildResponse(result) {
+    	if (result === "inf") {
+    	    return "\\textnormal{Result is too long to compute.}";
+    	}
+    	else {
+    	    const constNeighbors = ["+","-","_","^","x","/"];
+    	    const indef = (this.props.integral).split(" = ")[0];
+    	    var definite = "";
+    	    for (var i in indef) {
+        		i = Number(i);
+        		var c = indef[i];
+        		if (this.props.constMap.hasOwnProperty(c)) {
+        		    if (i !== indef.length-1 && constNeighbors.includes(indef[i+1])) {
+        		        definite += this.props.constMap[c];
+        		    }
+        		    else if (i !== 0 && constNeighbors.includes(indef[i-1])) {
+        		        definite += this.props.constMap[c];
+        		    }
+        		    else {
+        			definite += c;
+        		    }
+        		}
+        		else {
+        		    definite += c;
+        		}
+    	    }
+    	    return `${definite} = ${result}`;
+    	}
+    }
     render() {
         if (this.state.response !== "") {
             return (
@@ -258,7 +221,7 @@ class IntegralResult extends Component {
 class Integrals extends Component {
     render() {
         const cards = (this.props.db).map((intObj, index) =>
-            <IntegralCard integral={intObj.integral} constants={intObj.constants} query={intObj.query} key={index} index={index} />
+            <IntegralCard integral={intObj.integral} restrict={(intObj.hasOwnProperty("restrict")) ? intObj.restrict : ""} constants={intObj.constants} query={intObj.query} key={index} index={index} />
         );
         return (
             <Container>

@@ -10,7 +10,8 @@ const LogDB = [
         "query": ["integrate","ln","(","c","x",")","from","a","to","b"]
     },
     {
-        "integral": "\\int_a^b x^{n}\\ln(cx) dx = x^{n+1}\\biggr(\\frac{\\ln(x)}{n+1}-\\frac{1}{(n+1)^2}\\biggr) \\textnormal{, } n \\neq -1",
+        "integral": "\\int_a^b x^{n}\\ln(cx) dx = x^{n+1}\\biggr(\\frac{\\ln(x)}{n+1}-\\frac{1}{(n+1)^2}\\biggr)",
+        "restrict": "\\textnormal{, } n \\neq -1",
         "constants": ["a","b","c","n"],
         "query": ["integrate","x","^","n","ln","(","c","x",")","from","a","to","b"]
     },

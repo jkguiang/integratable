@@ -5,9 +5,10 @@ import { Integrals } from './Integrals';
 
 const BasicDB = [
     {
-        "integral": "\\int_a^b x^n dx = \\frac{1}{n+1}x^{n+1} \\textnormal{, } n \\neq -1",
+        "integral": "\\int_a^b x^n dx = \\frac{1}{n+1}x^{n+1}",
+        "restrict": "\\textnormal{, } n \\neq -1",
         "constants": ["a","b","n"],
-        "query": ["integrate","x","^","n","from","a","to","b"]
+        "query": "1 n 1 + / x n 1 + ^ *"
     },
     {
         "integral": "\\int_a^b \\frac{1}{x} dx = \\ln(x)",
@@ -15,12 +16,13 @@ const BasicDB = [
         "query": ["integrate","1","/","x","from","a","to","b"]
     },
     {
-        "integral": "\\int_a^b \\frac{1}{Ax+B} dx = \\frac{1}{A}\\ln(x)\\biggr\\rvert Ax+B \\biggr\\rvert",
+        "integral": "\\int_a^b \\frac{1}{Ax+B} dx = \\frac{1}{A}\\ln(x)\\bigr| Ax+B \\bigr|",
         "constants": ["a","b","A","B"],
-        "query": ["integrate","1","/","(","A","x","+","B",")","from","a","to","b"]
+        "query": ["1 A / ln abs A X * B + *"]
     },
     {
-        "integral": "\\int_a^b (x+c)^n dx = \\frac{(x+c)^{n+1}}{n+1} \\textnormal{, } n \\neq -1",
+        "integral": "\\int_a^b (x+c)^n dx = \\frac{(x+c)^{n+1}}{n+1}",
+        "restrict": "\\textnormal{, } n \\neq -1",
         "constants": ["a","b","c","n"],
         "query": ["integrate","(","x","+","c",")","^","n","from","a","to","b"]
     },
