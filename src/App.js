@@ -104,7 +104,7 @@ class MainNavbar extends Component {
                     <DropdownItem>Rational Functions</DropdownItem>
                   </LinkContainer>
                   <LinkContainer to="/radical">
-                    <DropdownItem>Radicals</DropdownItem>
+                    <DropdownItem>Radical Functions</DropdownItem>
                   </LinkContainer>
                   <LinkContainer to="/logs">
                     <DropdownItem>Logarithms</DropdownItem>
