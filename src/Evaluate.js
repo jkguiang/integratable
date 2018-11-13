@@ -52,19 +52,19 @@ function Operate(operator, operand) {
         return Math.atan(operand[0]);
     }
     else if (operator === "/") {
-        return (operand[0]/operand[1]);
+        return (operand[1]/operand[0]);
     }
     else if (operator === "*") {
-        return (operand[0]*operand[1]);
+        return (operand[1]*operand[0]);
     }
     else if (operator === "+") {
-        return (operand[0]+operand[1]);
+        return (operand[1]+operand[0]);
     }
     else if (operator === "-") {
-        return (operand[0]-operand[1]);
+        return (operand[1]-operand[0]);
     }
     else if (operator === "^") {
-        return (Math.pow(operand[0],operand[1]));
+        return (Math.pow(operand[1],operand[0]));
     }
     else {
         return operand[0];
@@ -72,18 +72,23 @@ function Operate(operator, operand) {
 }
 
 function Evaluator(postfix) {
+    console.log(postfix);
     var stack = [];
-    for (var i in postfix) {
+    for (var i = 0; i < postfix.length; i++) {
         if (isNaN(postfix[i])) {
+            console.log("operator: "+postfix[i]);
             var nPop = RetrievePop(postfix[i]);
             var operand = [];
             for (var n = 0; n < nPop; n++) {
                 operand.push(stack[stack.length-1]);
                 stack.pop();
             }
+            console.log(operand);
             stack.push(Operate(postfix[i], operand));
+            console.log(stack);
         }
         else {
+            console.log("number: "+postfix[i]);
             stack.push(Number(postfix[i]));
         }
     }
