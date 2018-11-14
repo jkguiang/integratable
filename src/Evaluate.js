@@ -70,7 +70,12 @@ function ToPostfix(query) {
             stack.pop();
         }
         else {
-            postfix.push(infix[i]);
+            if (!isNaN(postfix[postfix.length-1]) && infix[i] !== "" && infix[i-1] !== "" && !isNaN(infix[i]) && !isNaN(infix[i-1])) {
+                postfix[postfix.length-1] = postfix[postfix.length-1]+infix[i];
+            }
+            else {
+                postfix.push(infix[i]);
+            }
         }
     }
     return postfix;
@@ -175,5 +180,7 @@ export function Evaluate(query, constMap) {
             postfixB.push(postfix[i]);
         }
     }
+    console.log(postfixA);
+    console.log(postfixB);
     return (Evaluator(postfixB) - Evaluator(postfixA));
 }
