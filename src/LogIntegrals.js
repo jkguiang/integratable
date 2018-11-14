@@ -10,7 +10,7 @@ const LogDB = [
         "query": "x*ln(c*x)-x"
     },
     {
-        "integral": "\\int_a^b x^{n}\\ln(cx) dx = x^{n+1}\\biggr(\\frac{\\ln(x)}{n+1}-\\frac{1}{(n+1)^2}\\biggr)",
+        "integral": "\\int_a^b x^n\\ln(cx) dx = x^{n+1}\\biggr(\\frac{\\ln(x)}{n+1}-\\frac{1}{(n+1)^2}\\biggr)",
         "restrict": "\\textnormal{, } n \\neq -1",
         "constants": ["a","b","c","n"],
         "query": "(x^(n+1))*((ln(x))/(n+1)-(1)/((n+1)^2))"
