@@ -70,6 +70,7 @@ class IntegralCard extends Component {
         });
     }
     updateMap(constant, value) {
+        // TODO: add exceptions
         var newMap = this.state.constMap;
         newMap[constant] = value;
         var filled = true;
@@ -156,19 +157,14 @@ class IntegralResult extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            response: ""
+            response: "",
+            constNeighbors: ["+","-","_","^","x","/"]
         };
     }
     componentDidMount() {
         console.log(this.props.query);
-        var query = (this.props.query).split(" ");
-        for (var i in query) {
-            var c = query[i];
-            if (this.props.constMap.hasOwnProperty(c)){
-                query[i] = this.props.constMap[c];
-            }
-        }
-        var result = Evaluate(query, [this.props.constMap["a"], this.props.constMap["b"]]);
+        // var query = this.replaceConstants(this.props.query);
+        var result = Evaluate(this.props.query, this.props.constMap);
         this.setState({response: this.buildResponse(result)});
     }
     buildResponse(result) {
@@ -176,29 +172,50 @@ class IntegralResult extends Component {
     	    return "\\textnormal{Result is too long to compute.}";
     	}
     	else {
-    	    const constNeighbors = ["+","-","_","^","x","/"];
     	    const indef = (this.props.integral).split(" = ")[0];
-    	    var definite = "";
-    	    for (var i in indef) {
-        		i = Number(i);
-        		var c = indef[i];
-        		if (this.props.constMap.hasOwnProperty(c)) {
-        		    if (i !== indef.length-1 && constNeighbors.includes(indef[i+1])) {
-        		        definite += this.props.constMap[c];
-        		    }
-        		    else if (i !== 0 && constNeighbors.includes(indef[i-1])) {
-        		        definite += this.props.constMap[c];
-        		    }
-        		    else {
-        			definite += c;
-        		    }
-        		}
-        		else {
-        		    definite += c;
-        		}
-    	    }
+    	    var definite = this.replaceConstants(indef);
+    	    // for (var i in indef) {
+        	// 	i = Number(i);
+        	// 	var c = indef[i];
+        	// 	if (this.props.constMap.hasOwnProperty(c)) {
+        	// 	    if (i !== indef.length-1 && constNeighbors.includes(indef[i+1])) {
+        	// 	        definite += this.props.constMap[c];
+        	// 	    }
+        	// 	    else if (i !== 0 && constNeighbors.includes(indef[i-1])) {
+        	// 	        definite += this.props.constMap[c];
+        	// 	    }
+        	// 	    else {
+        	// 		definite += c;
+        	// 	    }
+        	// 	}
+        	// 	else {
+        	// 	    definite += c;
+        	// 	}
+    	    // }
     	    return `${definite} = ${result}`;
     	}
+    }
+    replaceConstants(orig) {
+        const constNeighbors = ["+","-","_","^","x","/"];
+        var replaced = "";
+        for (var i = 0; i < orig.length; i++) {
+            var c = orig[i];
+            if (this.props.constMap.hasOwnProperty(c)) {
+                if (i !== orig.length-1 && constNeighbors.includes(orig[i+1])) {
+                    replaced += this.props.constMap[c];
+                }
+                else if (i !== 0 && constNeighbors.includes(orig[i-1])) {
+                    replaced += this.props.constMap[c];
+                }
+                else {
+                    replaced += c;
+                }
+            }
+            else {
+                replaced += c;
+            }
+        }
+        return replaced;
     }
     render() {
         if (this.state.response !== "") {
