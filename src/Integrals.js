@@ -168,7 +168,6 @@ class IntegralResult extends Component {
         };
     }
     componentDidMount() {
-        console.log(this.props.query);
         var result = Evaluate(this.props.query, this.props.constMap);
         this.setState({response: this.buildResponse(result)});
     }
@@ -177,12 +176,11 @@ class IntegralResult extends Component {
     	    return "\\textnormal{Result is too long to compute.}";
     	}
     	else {
-            const constNeighbors = "+-_^x/";
+            const constNeighbors = "+-_^/*x";
             const exceptions = {"pi":"\\pi"};
     	    const indef = (this.props.integral).split(" = ")[0];
     	    var definite = ""
-    	    for (var i in indef) {
-        		i = Number(i);
+    	    for (var i = 0; i < indef.length; i++) {
         		var c = indef[i];
         		if (this.props.constMap.hasOwnProperty(c)) {
                     var replace = this.props.constMap[c];
@@ -203,7 +201,6 @@ class IntegralResult extends Component {
         		    definite += c;
         		}
     	    }
-            console.log(definite);
     	    return `${definite} = ${result}`;
     	}
     }

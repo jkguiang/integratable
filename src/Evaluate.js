@@ -180,7 +180,5 @@ export function Evaluate(query, constMap) {
             postfixB.push(postfix[i]);
         }
     }
-    console.log(postfixA);
-    console.log(postfixB);
     return (Evaluator(postfixB) - Evaluator(postfixA));
 }
