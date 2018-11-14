@@ -8,28 +8,28 @@ const BasicDB = [
         "integral": "\\int_a^b x^n dx = \\frac{1}{n+1}x^{n+1}",
         "restrict": "\\textnormal{, } n \\neq -1",
         "constants": ["a","b","n"],
-        "query": "1 n 1 + / x n 1 + ^ *"
+        "query": "(1/(n+1))*x^(n+1)"
     },
     {
         "integral": "\\int_a^b \\frac{1}{x} dx = \\ln(x)",
         "constants": ["a","b"],
-        "query": ["integrate","1","/","x","from","a","to","b"]
+        "query": "ln(x)"
     },
     {
-        "integral": "\\int_a^b \\frac{1}{Ax+B} dx = \\frac{1}{A}\\ln(x)\\bigr| Ax+B \\bigr|",
+        "integral": "\\int_a^b \\frac{1}{Ax+B} dx = \\frac{1}{A}\\ln\\bigr| Ax+B \\bigr|",
         "constants": ["a","b","A","B"],
-        "query": ["1 A / ln abs A X * B + *"]
+        "query": "(1/A)*ln(abs(A*x+B))"
     },
     {
         "integral": "\\int_a^b (x+c)^n dx = \\frac{(x+c)^{n+1}}{n+1}",
         "restrict": "\\textnormal{, } n \\neq -1",
         "constants": ["a","b","c","n"],
-        "query": ["integrate","(","x","+","c",")","^","n","from","a","to","b"]
+        "query": "((x+c)^(n+1))/(n+1)"
     },
     {
         "integral": "\\int_a^b \\frac{1}{x+c} dx = \\ln(x+c)",
         "constants": ["a","b","c"],
-        "query": ["integrate","1","/","(","x","+","c",")","from","a","to","b"]
+        "query": "ln(x+c)"
     }
 ];
 
