@@ -151,7 +151,7 @@ class App extends Component {
                 <Route exact path="/about" component={About}/>
                 <Route exact path="/donate" component={Donate}/>
                 <hr/>
-                <p className="text-muted">Last Updated: Nov. 4th, 2018</p>
+                <p className="text-muted">Last Updated: Nov. 14th, 2018</p>
               </Container>
             </Router>
         );
