@@ -13,11 +13,9 @@ function Retrieve(operator) {
 }
 
 function ToPostfix(query) {
-    console.log(query);
-    // alt: 1/(n+1)*x^(n+1)
+    // Build infix array
     var infix = [];
     var operator = "";
-    // Build infix array
     for (var j = 0; j < query.length; j++) {
         if (!isNaN(query[j]) || query[j] === "x" || operatorMap[2].includes(query[j]) || "()".includes(query[j])) {
             infix.push(operator);
@@ -28,27 +26,17 @@ function ToPostfix(query) {
             operator += query[j];
         }
     }
-    console.log(infix);
     // Build postfix array
     var postfix = [];
     var stack = [];
     stack.push("(");
     infix.push(")");
     for (var i = 0; i < infix.length; i++) {
-        console.log("iteration: "+i);
-        console.log(stack);
         if (infix[i] === "") {
             continue;
         }
         else if (Retrieve(infix[i]) > 0) {
-            console.log("operator: "+infix[i]);
-            var DEBUG = 0;
             while (true) {
-                DEBUG += 1;
-                if (DEBUG > 10) {
-                    console.log("DEBUG BREAK");
-                    break;
-                }
                 var toPop = stack[stack.length-1];
                 if (toPop === "(") {
                     break;
@@ -68,18 +56,10 @@ function ToPostfix(query) {
             stack.push(infix[i]);
         }
         else if (infix[i] === "(") {
-            console.log("open parantheses: "+infix[i]);
             stack.push(infix[i]);
         }
         else if (infix[i] === ")") {
-            console.log("closing parantheses: "+infix[i]);
-            var DEBUG = 0;
             while (true) {
-                DEBUG += 1;
-                if (DEBUG > 10) {
-                    console.log("DEBUG BREAK");
-                    break;
-                }
                 var toClear = stack[stack.length-1];
                 if (toClear === "(") {
                     break;
@@ -90,7 +70,6 @@ function ToPostfix(query) {
             stack.pop();
         }
         else {
-            console.log("other: "+infix[i]);
             postfix.push(infix[i]);
         }
     }
@@ -180,7 +159,6 @@ function Evaluator(postfix) {
 
 export function Evaluate(query, constMap) {
     var postfix = ToPostfix(query);
-    console.log(postfix);
     var postfixA = [];
     var postfixB = [];
     for (var i = 0; i < postfix.length; i++) {
@@ -190,7 +168,7 @@ export function Evaluate(query, constMap) {
         }
         else if (constMap.hasOwnProperty(postfix[i])) {
             postfixA.push(constMap[postfix[i]]);
-            postfixB.push(constMap[postfix[i]]);            
+            postfixB.push(constMap[postfix[i]]);
         }
         else {
             postfixA.push(postfix[i]);
