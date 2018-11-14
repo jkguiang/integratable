@@ -9,15 +9,15 @@ import {
   faAngleUp,
   faHome,
   faCheckCircle,
-  faExternalLinkSquareAlt,
   faTimesCircle,
   faHeart,
   faInfoCircle,
-  faGrin,
-  faGrinHearts,
+  faDragon,
+  faFistRaised,
   faHands,
   faStreetView,
-  faAnchor } from '@fortawesome/free-solid-svg-icons';
+  faAnchor,
+  faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Container } from 'reactstrap';
 import './App.css';
@@ -40,15 +40,15 @@ library.add(
   faAngleUp,
   faHome,
   faCheckCircle,
-  faExternalLinkSquareAlt,
   faTimesCircle,
   faHeart,
   faInfoCircle,
-  faGrin,
-  faGrinHearts,
+  faDragon,
+  faFistRaised,
   faHands,
   faStreetView,
-  faAnchor );
+  faAnchor,
+  faCoffee );
 
 class MainNavbar extends Component {
     constructor(props) {
