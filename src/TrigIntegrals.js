@@ -7,57 +7,50 @@ const TrigDB = [
     {
         "integral": "\\int_a^b \\sin(cx) dx = -\\frac{1}{c}\\cos(cx)",
         "constants": ["a","b","c"],
-        "query": ["integrate","sin","(","c","x",")","from","a","to","b"]
+        "query": "(1/c)*cos(c*x)"
     },
     {
         "integral": "\\int_a^b \\sin^{2}(cx) dx = \\frac{x}{2}-\\frac{\\sin(2cx)}{4c}",
         "constants": ["a","b","c"],
-        "query": ["integrate","sin","(","c","x",")","^","2","from","a","to","b"]
+        "query": "(x/2)-((sin(2*c*x))/(4*c))"
     },
     {
         "integral": "\\int_a^b \\sin^{3}(cx) dx = \\frac{3\\cos(cx)}{4c}-\\frac{\\cos(3cx)}{12c}",
         "constants": ["a","b","c"],
-        "query": ["integrate","sin","(","c","x",")","^","3","from","a","to","b"]
-    },
-    {
-        "integral": "\\int_a^b \\sin^{n}(cx) dx = \\frac{1}{nc}\\cos(cx)\\sin^{n-1}(cx)+\\frac{n-1}{nc}\\int_a^b \\sin^{n-2}(x) dx",
-        "constants": ["a","b","c","n"],
-        "query": ["integrate","sin","(","c","x",")","^","n","from","a","to","b"]
+        "query": "(3*cos(c*x))/(4*c)-(cos(3*c*x))/(12*c)"
     },
     {
         "integral": "\\int_a^b \\cos(cx) dx = \\frac{1}{c}\\sin(cx)",
         "constants": ["a","b","c"],
-        "query": ["integrate","cos","(","c","x",")","from","a","to","b"]
+        "query": "(1/c)*sin(c*x)"
     },
     {
         "integral": "\\int_a^b \\cos^{2}(cx) dx = \\frac{x}{2}+\\frac{\\sin(2cx)}{4c}",
         "constants": ["a","b","c"],
-        "query": ["integrate","cos","(","c","x",")","^","2","from","a","to","b"]
+        "query": "(x/2)+(sin(2*c*x))/(4*c)"
     },
     {
         "integral": "\\int_a^b \\cos^{3}(cx) dx = \\frac{3\\sin(cx)}{4c}-\\frac{\\sin(3cx)}{12c}",
         "constants": ["a","b","c"],
-        "query": ["integrate","cos","(","c","x",")","^","3","from","a","to","b"]
+        "query": "(3*sin(c*x))/(4*c)-(sin(3*c*x))/(12*c)"
     },
     {
-        "integral": "\\int_a^b \\cos^{n}(cx) dx = \\frac{1}{nc}\\sin(cx)\\cos^{n-1}(cx)+\\frac{n-1}{nc}\\int_a^b \\cos^{n-2}(x) dx",
-        "constants": ["a","b","c","n"],
-        "query": ["integrate","cos","(","c","x",")","^","n","from","a","to","b"]
-    },
-    {
-        "integral": "\\int_a^b \\sin(Ax)\\cos(Bx) dx = \\frac{\\cos[(A-B)x]}{2(A-B)}-\\frac{\\cos[(A+B)x]}{2(A+B)}\\textnormal{, } A \\neq B",
+        "integral": "\\int_a^b \\sin(Ax)\\cos(Bx) dx = \\frac{\\cos[(A-B)x]}{2(A-B)}-\\frac{\\cos[(A+B)x]}{2(A+B)}",
+        "restrict":"\\textnormal{, } A \\neq B",
         "constants": ["a","b","A","B"],
-        "query": ["integrate","sin","(","A","x",")","cos","(","B","x",")","from","a","to","b"]
+        "query": "(cos((A-B)*x))/(2*(A-B))-(cos((A+B)*x))/(2*(A+B))"
     },
     {
-        "integral": "\\int_a^b \\sin^{2}(Ax)\\cos(Bx) dx = \\frac{\\cos[(A-B)x]}{2(A-B)}+\\frac{\\sin(Bx)}{2B}-\\frac{\\cos[(A+B)x]}{2(A+B)}\\textnormal{, } A \\neq B",
+        "integral": "\\int_a^b \\sin^{2}(Ax)\\cos(Bx) dx = \\frac{\\cos[(A-B)x]}{2(A-B)}+\\frac{\\sin(Bx)}{2B}-\\frac{\\cos[(A+B)x]}{2(A+B)}",
+        "restrict":"\\textnormal{, } A \\neq B",
         "constants": ["a","b","A","B"],
-        "query": ["integrate","sin","(","A","x",")","^","2","cos","(","B","x",")","from","a","to","b"]
+        "query": "(cos((A-B)*x))/(2*(A-B))+(sin(B*x))/(2*B)-(cos((A+B)*x))/(2*(A+B))"
     },
     {
-        "integral": "\\int_a^b \\sin(Ax)\\cos^{2}(Bx) dx = \\frac{\\cos[(A-B)x]}{2(A-B)}-\\frac{\\cos(Bx)}{2B}-\\frac{\\cos[(A+B)x]}{2(A+B)}\\textnormal{, } A \\neq B",
+        "integral": "\\int_a^b \\sin(Ax)\\cos^{2}(Bx) dx = \\frac{\\cos[(A-B)x]}{2(A-B)}-\\frac{\\cos(Bx)}{2B}-\\frac{\\cos[(A+B)x]}{2(A+B)}",
+        "restrict":"\\textnormal{, } A \\neq B",
         "constants": ["a","b","A","B"],
-        "query": ["integrate","sin","(","A","x",")","cos","(","B","x",")","^","2","from","a","to","b"]
+        "query": "(cos((A-B)*x))/(2*(A-B))+(cos(B*x))/(2*B)-(cos((A+B)*x))/(2*(A+B))"
     },
 ];
 
