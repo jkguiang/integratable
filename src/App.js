@@ -153,7 +153,7 @@ class App extends Component {
                 <Route exact path="/about" component={About}/>
                 <Route exact path="/donate" component={Donate}/>
                 <hr/>
-                <p className="text-muted text-center"><i><FontAwesomeIcon icon="bug" /> Please report any errors <a href="https://github.com/jkguiang/integratable/issues"><b>here</b></a>, thanks!</i></p>
+                <p className="text-muted text-center"><i><FontAwesomeIcon icon="bug" /> Please report any errors or post feature requests <a href="https://github.com/jkguiang/integratable/issues"><b>here</b></a>, thanks!</i></p>
               </Container>
             </Router>
         );
