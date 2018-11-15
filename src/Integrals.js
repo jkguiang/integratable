@@ -71,21 +71,46 @@ class IntegralCard extends Component {
         });
     }
     updateMap(constant, value) {
-        // TODO: add exceptions
-        const exceptions = ["pi"];
         var newMap = this.state.constMap;
         newMap[constant] = value;
-        var filled = true;
         for (var c in newMap) {
-            var notNumber = (isNaN(newMap[c]) || newMap[c] === "");
-            var hasWhiteSpace = (typeof(newMap[c]) === "undefined" || newMap[c].indexOf(" ") >= 0);
-            if ((notNumber || hasWhiteSpace) && !exceptions.includes(newMap[c])) {
-                this.setState({isGood: false});
-                return;
+            var val = newMap[c];
+            if (isNaN(val)) {
+                if (val === "" || typeof(val) === "undefined") {
+                    this.setState({ isGood: false });
+                    return;
+                }
+                else if ((val).indexOf(" ") >= 0) {
+                    this.setState({ isGood: false });
+                    return;
+                }
+                else if (val.includes("pi")) {
+                    if (val.includes("*")) {
+                        var splitVal = val.split("*");
+                        if (isNaN(splitVal[0]) || splitVal[1] !== "pi") {
+                            this.setState({ isGood: false });
+                            return;
+                        }
+                    }
+                    else {
+                        var coeff = value.substring(0, val.length-2);
+                        if (isNaN(coeff)) {
+                            this.setState({ isGood: false });
+                            return;
+                        }
+                        else {
+                            newMap[c] = coeff+((coeff === "") ? "pi" : "*pi");
+                        }
+                    }
+                }
+                else {
+                    this.setState({ isGood: false });
+                    return;
+                }
             }
         }
         this.setState({
-            isGood: filled,
+            isGood: true,
             constMap: newMap
         });
         return;
@@ -94,9 +119,6 @@ class IntegralCard extends Component {
         var url = (window.location.href.split("#"));
         var base = (url.length < 3) ? window.location.href : (window.location.href).split("#"+url[url.length-1])[0];
         var isAnchored = (url[url.length-1] === String(this.props.index));
-        var colStyle = {
-            paddingBottom: "15px"
-        };
         var cardStyle = {
             width: "100%",
             overflowX: "auto"
@@ -115,14 +137,14 @@ class IntegralCard extends Component {
         return (
             <React.Fragment>
               <Row id={this.props.index}>
-                <Col md={8} style={colStyle}>
+                <Col md={8} style={{paddingBottom: "15px"}}>
                   <Card style={(isAnchored) ? anchoredStyle : cardStyle}>
                     <CardBody>
                       <BlockMath math={this.props.integral+"\\biggr|_{x=a}^{x=b}"+this.props.restrict} />
                     </CardBody>
                   </Card>
                 </Col>
-                <Col md={4} className="d-flex align-items-stretch" style={colStyle}>
+                <Col md={4} className="d-flex align-items-stretch" style={{paddingBottom: "15px"}}>
                   <Card style={cardStyle}>
                     <CardHeader className="text-center"><FontAwesomeIcon icon="calculator" /> Evaluation Parameters</CardHeader>
                     <CardBody>
@@ -147,7 +169,7 @@ class IntegralCard extends Component {
               </Row>
               <Modal isOpen={this.state.showModal} toggle={this.toggle} className="modal-lg">
                 <ModalHeader toggle={this.toggle}>Result</ModalHeader>
-                <ModalBody>
+                <ModalBody style={{width:"100%"}}>
                   <IntegralResult integral={this.props.integral} query={this.props.query} plot={this.props.plot} constMap={this.state.constMap} />
                 </ModalBody>
                 <ModalFooter>
