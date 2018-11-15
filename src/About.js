@@ -25,7 +25,6 @@ class About extends Component {
                     <a href="https://github.com/"><FontAwesomeIcon icon={['fab', 'github']}/></a>&nbsp;
                     <a href="https://fontawesome.com/"><FontAwesomeIcon icon={['fab', 'font-awesome-flag']}/></a>
                   </h4>
-                  <p><br /></p>
                   <h2><FontAwesomeIcon icon="calculator" /> How do I use it?</h2>
                   <hr/>
                   <p>
