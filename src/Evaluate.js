@@ -182,3 +182,34 @@ export function Evaluate(query, constMap) {
     }
     return (Evaluator(postfixB) - Evaluator(postfixA));
 }
+
+export function Enumerate(query, constMap, nPoints) {
+    var postfix = ToPostfix(query);
+    var toEvaluate = [];
+    var toReplace = [];
+    for (var i = 0; i < postfix.length; i++) {
+        if (postfix[i] === "x") {
+            toReplace.push(i);
+            toEvaluate.push("x");
+        }
+        else if (constMap.hasOwnProperty(postfix[i])) {
+            toEvaluate.push(constMap[postfix[i]]);
+        }
+        else {
+            toEvaluate.push(postfix[i]);
+        }
+    }
+    var data = [];
+    const a = Number(constMap["a"]);
+    const b = Number(constMap["b"]);
+    const inc = Math.abs(b-a)/nPoints;
+    for (var x = (a-inc*10); x < (b+inc*10); x+=inc) {
+        for (var j = 0; j < toReplace.length; j++) {
+            toEvaluate[toReplace[j]] = String(x);
+        }
+        var fVal = Evaluator(toEvaluate);
+        var aVal = (a <= x && x <= b) ? fVal : 0;
+        data.push({name: x.toFixed(2), func: fVal, area: aVal});
+    }
+    return data;
+}

@@ -12,6 +12,7 @@ import './App.css';
 import 'katex/dist/katex.min.css';
 import { InlineMath, BlockMath } from 'react-katex';
 import { Evaluate } from './Evaluate';
+import Plot from './Plot'
 
 class IntegralInput extends Component {
     constructor(props) {
@@ -147,7 +148,7 @@ class IntegralCard extends Component {
               <Modal isOpen={this.state.showModal} toggle={this.toggle} className="modal-lg">
                 <ModalHeader toggle={this.toggle}>Result</ModalHeader>
                 <ModalBody>
-                  <IntegralResult integral={this.props.integral} query={this.props.query} constMap={this.state.constMap} />
+                  <IntegralResult integral={this.props.integral} query={this.props.query} plot={this.props.plot} constMap={this.state.constMap} />
                 </ModalBody>
                 <ModalFooter>
                   <Button color="secondary" onClick={this.toggle} size="sm">
@@ -209,6 +210,7 @@ class IntegralResult extends Component {
             return (
                 <React.Fragment>
                   <BlockMath math={this.state.response} />
+                  <Plot query={this.props.plot} constMap={this.props.constMap} />
                 </React.Fragment>
             );
         }
@@ -225,7 +227,7 @@ class IntegralResult extends Component {
 class Integrals extends Component {
     render() {
         const cards = (this.props.db).map((intObj, index) =>
-            <IntegralCard integral={intObj.integral} restrict={(intObj.hasOwnProperty("restrict")) ? intObj.restrict : ""} constants={intObj.constants} query={intObj.query} key={index} index={index} />
+            <IntegralCard integral={intObj.integral} restrict={(intObj.hasOwnProperty("restrict")) ? intObj.restrict : ""} constants={intObj.constants} query={intObj.query} plot={intObj.plot} key={index} index={index} />
         );
         return (
             <Container>
