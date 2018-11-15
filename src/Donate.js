@@ -27,7 +27,7 @@ class Donate extends Component {
                   <h5><FontAwesomeIcon icon="street-view" /> Integral Deities</h5>
                   <p className="text-muted"><i>"Non-etherial beings that contributed to the inscription of the Fundamental Theorem of Calculus unto the mortal plane. Operate as the infinite sum of individual, differential consciousnesses."</i></p>
                   <ul>
-                    <li><i>For one coffee, you can become the first Integral Deity!</i></li>
+                    <li>Gabriel Hernandez</li>
                   </ul>
                   <h5><FontAwesomeIcon icon="hands" /> Integral Paladin</h5>
                   <p className="text-muted"><i>"Holy knights bound to the corporeal realm. Provided at birth with nth-dimensional clairvoyance such that the indefinite integrals of all functions are made clear. Fiercely committed to the Path of the Integral."</i></p>
