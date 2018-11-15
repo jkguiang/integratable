@@ -7,12 +7,14 @@ const TrigDB = [
     {
         "integral": "\\int_a^b \\sin(cx) dx = -\\frac{1}{c}\\cos(cx)",
         "constants": ["a","b","c"],
-        "query": "(1/c)*cos(c*x)"
+        "query": "(1/c)*cos(c*x)",
+        "plot":"sin(c*x)"
     },
     {
         "integral": "\\int_a^b \\sin^{2}(cx) dx = \\frac{x}{2}-\\frac{\\sin(2cx)}{4c}",
         "constants": ["a","b","c"],
-        "query": "(x/2)-((sin(2*c*x))/(4*c))"
+        "query": "(x/2)-((sin(2*c*x))/(4*c))",
+        "plot":"(sin(c*x))^2"
     },
     {
         "integral": "\\int_a^b \\sin^{3}(cx) dx = \\frac{3\\cos(cx)}{4c}-\\frac{\\cos(3cx)}{12c}",

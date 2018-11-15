@@ -37,7 +37,7 @@ const LogDB = [
     },
     {
         "integral": "\\int_a^b \\ln\\bigr(x^2-c^2\\bigr) dx = x\\ln\\bigr(x^2-c^2\\bigr)+c\\ln\\biggr(\\frac{x+c}{x-c}\\biggr)-2x",
-        "restrict": "\\textnormal{ } a\\textnormal{, }b < c",
+        "restrict": "\\textnormal{ } a,b < c",
         "constants": ["a","b","c"],
         "query": "x*ln(x^2-c^2)+c*ln((x+c)/(x-c))-2*x",
         "plot": "ln((x^2)-(c^2))"
