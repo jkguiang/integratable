@@ -8,28 +8,33 @@ const BasicDB = [
         "integral": "\\int_a^b x^n dx = \\frac{1}{n+1}x^{n+1}",
         "restrict": "\\textnormal{, } n \\neq -1",
         "constants": ["a","b","n"],
-        "query": "(1/(n+1))*x^(n+1)"
+        "query": "(1/(n+1))*x^(n+1)",
+        "plot": "x^(n)"
     },
     {
         "integral": "\\int_a^b \\frac{1}{x} dx = \\ln(x)",
         "constants": ["a","b"],
-        "query": "ln(x)"
+        "query": "ln(x)",
+        "plot": "1/x"
     },
     {
         "integral": "\\int_a^b \\frac{1}{Ax+B} dx = \\frac{1}{A}\\ln\\bigr| Ax+B \\bigr|",
         "constants": ["a","b","A","B"],
-        "query": "(1/A)*ln(abs(A*x+B))"
+        "query": "(1/A)*ln(abs(A*x+B))",
+        "plot": "1/(A*x+B)"
     },
     {
         "integral": "\\int_a^b (x+c)^n dx = \\frac{(x+c)^{n+1}}{n+1}",
         "restrict": "\\textnormal{, } n \\neq -1",
         "constants": ["a","b","c","n"],
-        "query": "((x+c)^(n+1))/(n+1)"
+        "query": "((x+c)^(n+1))/(n+1)",
+        "plot": "(x+c)^(n)"
     },
     {
         "integral": "\\int_a^b \\frac{1}{x+c} dx = \\ln(x+c)",
         "constants": ["a","b","c"],
-        "query": "ln(x+c)"
+        "query": "ln(x+c)",
+        "plot": "1/(x+c)"
     }
 ];
 

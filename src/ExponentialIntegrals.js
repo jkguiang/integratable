@@ -7,17 +7,20 @@ const ExponentialDB = [
     {
         "integral": "\\int_a^b e^{cx} dx = \\frac{1}{c}e^{cx}",
         "constants": ["a","b","c"],
-        "query": "(1/c)*e^(c*x)"
+        "query": "(1/c)*e^(c*x)",
+        "plot": "e^(c*x)"
     },
     {
         "integral": "\\int_a^b xe^{cx} dx = (\\frac{x}{c}-\\frac{1}{c^2})e^{cx}",
         "constants": ["a","b","c"],
-        "query": "(x/c-1/(c^2))*e^(c*x)"
+        "query": "(x/c-1/(c^2))*e^(c*x)",
+        "plot":"x*(e^(c*x))"
     },
     {
         "integral": "\\int_a^b x^{2}e^{cx} dx = (\\frac{x^2}{c}-\\frac{2x}{c^2}+\\frac{2}{c^3})e^{cx}",
         "constants": ["a","b","c"],
-        "query": "((x^2)/c-(2*x)/(c^2)+2/(c^3))*e^(c*x)"
+        "query": "((x^2)/c-(2*x)/(c^2)+2/(c^3))*e^(c*x)",
+        "plot": "(x^2)*(e^(c*x))"
     }
 ];
 
