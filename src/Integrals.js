@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './App.css';
 import 'katex/dist/katex.min.css';
 import { InlineMath, BlockMath } from 'react-katex';
-import { Evaluate } from './Evaluate';
+import { Enumerate } from './Evaluate';
 import Plot from './Plot'
 
 class IntegralInput extends Component {
@@ -75,7 +75,7 @@ class IntegralCard extends Component {
         newMap[constant] = value;
         for (var c in newMap) {
             var val = newMap[c];
-            if (isNaN(val)) {
+            if (isNaN(val) || val === "") {
                 if (val === "" || typeof(val) === "undefined") {
                     this.setState({ isGood: false });
                     return;
@@ -86,7 +86,7 @@ class IntegralCard extends Component {
                 }
                 else if (val.includes("pi")) {
                     if (val.includes("*")) {
-                        var splitVal = val.split("*");
+                        var splitVal = (typeof(val === "object")) ? val : val.split("*");
                         if (isNaN(splitVal[0]) || splitVal[1] !== "pi") {
                             this.setState({ isGood: false });
                             return;
@@ -99,7 +99,8 @@ class IntegralCard extends Component {
                             return;
                         }
                         else {
-                            newMap[c] = coeff+((coeff === "") ? "pi" : "*pi");
+                            // newMap[c] = coeff+((coeff === "") ? "pi" : "*pi");
+                            newMap[c] = (coeff === "") ? ["pi"] : [coeff,"pi","*"];
                         }
                     }
                 }
@@ -191,7 +192,8 @@ class IntegralResult extends Component {
         };
     }
     componentDidMount() {
-        var result = Evaluate(this.props.query, this.props.constMap);
+        const evaluated = Enumerate(this.props.query, this.props.constMap, 1);
+        const result = evaluated[1].y - evaluated[0].y;
         this.setState({response: this.buildResponse(result)});
     }
     buildResponse(result) {
@@ -200,17 +202,13 @@ class IntegralResult extends Component {
     	}
     	else {
             const constNeighbors = "+-_^/*x";
-            const exceptions = {"pi":"\\pi"};
     	    const indef = (this.props.integral).split(" = ")[0];
     	    var definite = ""
     	    for (var i = 0; i < indef.length; i++) {
         		var c = indef[i];
         		if (this.props.constMap.hasOwnProperty(c)) {
                     var replace = this.props.constMap[c];
-                    if (exceptions.hasOwnProperty(replace)) {
-                        definite += exceptions[replace];
-                    }
-        		    else if (i !== indef.length-1 && constNeighbors.includes(indef[i+1])) {
+        		    if (i !== indef.length-1 && constNeighbors.includes(indef[i+1])) {
         		        definite += "{"+replace+"}";
         		    }
         		    else if (i !== 0 && constNeighbors.includes(indef[i-1])) {

@@ -162,31 +162,15 @@ function Evaluator(postfix) {
     return stack[0];
 }
 
-export function Evaluate(query, constMap) {
-    var postfix = ToPostfix(query);
-    var postfixA = [];
-    var postfixB = [];
-    for (var i = 0; i < postfix.length; i++) {
-        if (postfix[i] === "x") {
-            postfixA.push(constMap["a"]);
-            postfixB.push(constMap["b"]);
-        }
-        else if (constMap.hasOwnProperty(postfix[i])) {
-            postfixA.push(constMap[postfix[i]]);
-            postfixB.push(constMap[postfix[i]]);
-        }
-        else {
-            postfixA.push(postfix[i]);
-            postfixB.push(postfix[i]);
-        }
-    }
-    return (Evaluator(postfixB) - Evaluator(postfixA));
-}
-
 export function Enumerate(query, constMap, nPoints) {
     var postfix = ToPostfix(query);
     var toEvaluate = [];
     var toReplace = [];
+    for (var c in constMap) {
+        if (isNaN(constMap[c])) {
+            constMap[c] = Evaluator(constMap[c]);
+        }
+    }
     for (var i = 0; i < postfix.length; i++) {
         if (postfix[i] === "x") {
             toReplace.push(i);
@@ -203,13 +187,12 @@ export function Enumerate(query, constMap, nPoints) {
     const a = Number(constMap["a"]);
     const b = Number(constMap["b"]);
     const inc = Math.abs(b-a)/nPoints;
-    for (var x = (a-inc*10); x < (b+inc*10); x+=inc) {
+    for (var x = a; x <= b; x+=inc) {
         for (var j = 0; j < toReplace.length; j++) {
             toEvaluate[toReplace[j]] = String(x);
         }
         var fVal = Evaluator(toEvaluate);
-        var aVal = (a <= x && x <= b) ? fVal : 0;
-        data.push({name: x.toFixed(2), func: fVal, area: aVal});
+        data.push({x: x.toFixed(2), y: fVal});
     }
     return data;
 }
