@@ -17,7 +17,8 @@ import {
   faHands,
   faStreetView,
   faAnchor,
-  faCoffee } from '@fortawesome/free-solid-svg-icons';
+  faCoffee,
+  faBug } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Container } from 'reactstrap';
 import './App.css';
@@ -48,7 +49,8 @@ library.add(
   faHands,
   faStreetView,
   faAnchor,
-  faCoffee );
+  faCoffee,
+  faBug );
 
 class MainNavbar extends Component {
     constructor(props) {
@@ -151,7 +153,7 @@ class App extends Component {
                 <Route exact path="/about" component={About}/>
                 <Route exact path="/donate" component={Donate}/>
                 <hr/>
-                <p className="text-muted">Last Updated: Nov. 14th, 2018</p>
+                <p className="text-muted text-center"><i><FontAwesomeIcon icon="bug" /> Please report any errors <a href="https://github.com/jkguiang/integratable/issues"><b>here</b></a>, thanks!</i></p>
               </Container>
             </Router>
         );
