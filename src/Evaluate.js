@@ -187,12 +187,12 @@ export function Enumerate(query, constMap, nPoints) {
     const a = Number(constMap["a"]);
     const b = Number(constMap["b"]);
     const inc = Math.abs(b-a)/nPoints;
-    for (var x = a; x <= b; x+=inc) {
+    for (var x = Math.min(a,b); x <= Math.max(a,b); x+=inc) {
         for (var j = 0; j < toReplace.length; j++) {
             toEvaluate[toReplace[j]] = String(x);
         }
         var fVal = Evaluator(toEvaluate);
-        data.push({x: x.toFixed(2), y: fVal});
+        data.push({x: x.toFixed(2), y: fVal*((a > b) ? -1 : 1 )});
     }
     return data;
 }
