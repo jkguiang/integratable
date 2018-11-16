@@ -6,7 +6,8 @@ import { Container,
          Collapse,
          Card, CardHeader, CardBody,
          Form, FormGroup, Input,
-         Modal, ModalHeader, ModalBody, ModalFooter, Alert } from 'reactstrap';
+         Modal, ModalHeader, ModalBody, ModalFooter, Alert,
+         Popover, PopoverBody } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './App.css';
 import 'katex/dist/katex.min.css';
@@ -14,82 +15,69 @@ import { InlineMath, BlockMath } from 'react-katex';
 import { Enumerate } from './Evaluate';
 import Plot from './Plot'
 
-class IntegralInput extends Component {
-    constructor(props) {
-      super(props);
-
-      this.check = this.check.bind(this);
-      this.handleInput = this.handleInput.bind(this);
-      this.state = {
-        isGood: false
-      };
-    }
-    check() {
-      this.setState({
-        isGood: true
-      });
-    }
-    handleInput(evt) {
-        this.props.update(evt.target.id, evt.target.value);
-    }
-    render() {
-        return (
-            <Row form>
-              <Col md={2}>
-                <InlineMath math={this.props.constant+" = "} />
-              </Col>
-              <Col md={10}>
-                <FormGroup>
-                  <Input type="text" name={this.props.constant} id={this.props.constant} onKeyUp={this.handleInput} />
-                </FormGroup>
-              </Col>
-            </Row>
-        );
-    }
-}
-
 class IntegralCard extends Component {
     constructor(props) {
         super(props);
 
+        this.handleCopy = this.handleCopy.bind(this);
+        this.handleClear = this.handleClear.bind(this);
         this.toggle = this.toggle.bind(this);
         this.updateMap = this.updateMap.bind(this);
-        var initMap = {};
-        for (var c in this.props.constants) {
-            initMap[this.props.constants[c]] = undefined;
-        }
 
         this.state = {
             showModal: false,
             isGood: false,
-            constMap: initMap
+            constMap: this.initMap(),
+            isCopied: false
         };
+    }
+    initMap() {
+        var initMap = {};
+        for (var c in this.props.constants) {
+            initMap[this.props.constants[c]] = "";
+        }
+        return initMap;
+    }
+    handleCopy = (e) => {
+        this.textArea.select();
+        document.execCommand('copy');
+        e.target.focus();
+        this.setState({ isCopied: !this.state.isCopied });
+    }
+    handleClear() {
+        this.setState({
+            isGood: false,
+            constMap: this.initMap()
+        });
     }
     toggle() {
         this.setState({
             showModal: !this.state.showModal
         });
     }
-    updateMap(constant, value) {
+    updateMap(evt) {
+        var constant = evt.target.id;
+        var value = evt.target.value;
         var newMap = this.state.constMap;
+        var passed = true;
         newMap[constant] = value;
         for (var c in newMap) {
             var val = newMap[c];
             if (isNaN(val) || val === "") {
                 if (val === "" || typeof(val) === "undefined") {
-                    this.setState({ isGood: false });
-                    return;
+                    passed = false;
+                    break;
                 }
                 else if ((val).indexOf(" ") >= 0) {
-                    this.setState({ isGood: false });
-                    return;
+                    passed = false;
+                    break;
                 }
                 else if (val.includes("pi")) {
                     if (val.includes("*")) {
                         var splitVal = (typeof(val === "object")) ? val : val.split("*");
                         if (isNaN(splitVal[0]) || splitVal[splitVal.length-2] !== "pi") {
-                            this.setState({ isGood: false });
-                            return;
+                            passed = false;
+                            break;
                         }
                     }
                     else {
@@ -99,8 +87,8 @@ class IntegralCard extends Component {
                                 newMap[c] = ["0","1","-","pi","*"];
                             }
                             else {
-                                this.setState({ isGood: false });
-                                return;
+                                passed = false;
+                                break;
                             }
                         }
                         else {
@@ -109,13 +97,13 @@ class IntegralCard extends Component {
                     }
                 }
                 else {
-                    this.setState({ isGood: false });
-                    return;
+                    passed = false;
+                    break;
                 }
             }
         }
         this.setState({
-            isGood: true,
+            isGood: passed,
             constMap: newMap
         });
         return;
@@ -134,10 +122,20 @@ class IntegralCard extends Component {
             borderColor: "#000"
         };
         var anchorStyle = {
-            color: "#5cb85c"
+            color: "#5cb85c",
+            paddingTop: "0"
         };
         const inputs = (this.props.constants).map((constant, index) =>
-            <IntegralInput constant={constant} key={index+10} update={this.updateMap}/>
+            <Row form key={constant+String(index)} >
+              <Col md={2}>
+                <InlineMath math={constant+" = "} />
+              </Col>
+              <Col md={10}>
+                <FormGroup>
+                  <Input value={this.state.constMap[constant]} type="text" name={constant} id={constant} onChange={this.updateMap} key={constant+String(index)} />
+                </FormGroup>
+              </Col>
+            </Row>
         );
         return (
             <React.Fragment>
@@ -153,21 +151,33 @@ class IntegralCard extends Component {
                   <Card style={cardStyle}>
                     <CardHeader className="text-center"><FontAwesomeIcon icon="calculator" /> Evaluation Parameters</CardHeader>
                     <CardBody>
-                      <Form>
+                      <Form ref={(f) => this.form = f}>
                         {inputs}
+                        <textarea ref={(textarea) => this.textArea = textarea} style={{height:"0",width:"0",opacity:"0"}} value={this.props.integral+"\\biggr|_{x=a}^{x=b}"+this.props.restrict} readOnly />
                       </Form>
-                      <Row>
-                        <Col md={2}>
-                          <Button color="link" href={base+"#"+this.props.index} style={(isAnchored) ? anchorStyle : {}}>
-                            <FontAwesomeIcon icon="anchor" />
-                          </Button>
-                        </Col>
-                        <Col md={10}>
-                          <Button outline color={(this.state.isGood) ? "success" : "danger"} block onClick={this.toggle} disabled={!this.state.isGood}>
-                          {(this.state.isGood) ? <FontAwesomeIcon icon="check-circle" /> : <FontAwesomeIcon icon="times-circle"   />} Submit
-                          </Button>
-                        </Col>
+                      <Row className="text-center">
+                          <Col md={4}>
+                            <Button color="link" href={base+"#"+this.props.index} style={(isAnchored) ? anchorStyle : {paddingTop: "0"}}>
+                              <FontAwesomeIcon icon="anchor" />
+                            </Button>
+                          </Col>
+                          <Col md={4}>
+                            <Button id={"toClipboard"+this.props.index} color="link" style={{paddingTop: "0", color:"#000"}} onClick={this.handleCopy}>
+                              {(this.state.isCopied) ? <FontAwesomeIcon icon="clipboard-check" /> : <FontAwesomeIcon icon="clipboard" />}
+                            </Button>
+                            <Popover placement="bottom" isOpen={this.state.isCopied} target={"toClipboard"+this.props.index} toggle={this.handleCopy}>
+                              <PopoverBody>LaTeX copied to clipboard!</PopoverBody>
+                            </Popover>
+                          </Col>
+                          <Col md={4}>
+                            <Button color="link" style={{paddingTop: "0", color:"#000"}} onClick={this.handleClear}>
+                              <FontAwesomeIcon icon="undo-alt" />
+                            </Button>
+                          </Col>
                       </Row>
+                       <Button outline color={(this.state.isGood) ? "success" : "danger"} block onClick={this.toggle} disabled={!this.state.isGood}>
+                         {(this.state.isGood) ? <FontAwesomeIcon icon="check-circle" /> : <FontAwesomeIcon icon="times-circle"   />} Submit
+                       </Button>
                     </CardBody>
                   </Card>
                 </Col>

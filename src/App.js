@@ -4,24 +4,13 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import {
-  faCalculator,
-  faAngleDown,
-  faAngleUp,
-  faHome,
-  faCheckCircle,
-  faTimesCircle,
-  faHeart,
-  faInfoCircle,
-  faDragon,
-  faFistRaised,
-  faHands,
-  faStreetView,
-  faAnchor,
-  faCoffee,
-  faBug,
-  faSkullCrossbones,
-  faAngleDoubleLeft,
-  faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
+  faCalculator, faAngleDown, faAngleUp,
+  faHome, faCheckCircle, faTimesCircle,
+  faHeart, faInfoCircle, faDragon,
+  faFistRaised, faHands, faStreetView,
+  faAnchor, faCoffee, faBug,
+  faSkullCrossbones, faAngleDoubleLeft, faAngleDoubleRight,
+  faClipboard, faClipboardCheck, faUndoAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Container } from 'reactstrap';
 import './App.css';
@@ -38,25 +27,14 @@ import { TrigIntegrals } from './TrigIntegrals';
 
 // Load icons
 library.add(
-  fab,
-  faCalculator,
-  faAngleDown,
-  faAngleUp,
-  faHome,
-  faCheckCircle,
-  faTimesCircle,
-  faHeart,
-  faInfoCircle,
-  faDragon,
-  faFistRaised,
-  faHands,
-  faStreetView,
-  faAnchor,
-  faCoffee,
-  faBug,
-  faSkullCrossbones,
-  faAngleDoubleLeft,
-  faAngleDoubleRight );
+  fab, faCalculator, faAngleDown,
+  faAngleUp, faHome, faCheckCircle,
+  faTimesCircle, faHeart, faInfoCircle,
+  faDragon, faFistRaised, faHands,
+  faStreetView, faAnchor, faCoffee,
+  faBug, faSkullCrossbones, faAngleDoubleLeft,
+  faAngleDoubleRight, faClipboard, faClipboardCheck,
+  faUndoAlt );
 
 class MainNavbar extends Component {
     constructor(props) {
