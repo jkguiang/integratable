@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Jumbotron, Container } from 'reactstrap';
+import { Jumbotron, Container,
+         Dropdown, DropdownToggle,
+         DropdownMenu, DropdownItem  } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './App.css';
 
@@ -17,14 +19,21 @@ class About extends Component {
                   <h2><FontAwesomeIcon icon="info-circle" /> What is this?</h2>
                   <hr/>
                   <p>
-                  Integratable is an interactive integral table. There are many static, PDF integral tables out there, but Integratable uses React to make integrals easier to find and more pleasing to look at. All of the integrals on this website are already solved, so any integral can be easily evaluated without any fancy numerical approximations or other operations usually handled by advanced backend software.
+                  Integratable is an interactive integral table. There are many static, PDF integral tables out there, but Integratable uses React to make integrals easier to find and more pleasing to look at. All of the integrals on this website are already solved, so any integral can be easily evaluated without any fancy numerical approximations or other operations usually handled by advanced backend software. All of this websites main dependencies are listed below.
                   </p>
-                  <h4 className="text-center">
+                  <h2 className="text-center">
+                    <FontAwesomeIcon icon="angle-double-right" />&nbsp;&nbsp;&nbsp;&nbsp;
                     <a href="https://reactjs.org/"><FontAwesomeIcon icon={['fab', 'react']}/></a>&nbsp;
                     <a href="https://nodejs.org/en/"><FontAwesomeIcon icon={['fab', 'node-js']}/></a>&nbsp;
                     <a href="https://github.com/"><FontAwesomeIcon icon={['fab', 'github']}/></a>&nbsp;
                     <a href="https://fontawesome.com/"><FontAwesomeIcon icon={['fab', 'font-awesome-flag']}/></a>
-                  </h4>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<FontAwesomeIcon icon="angle-double-left" />
+                  </h2>
+                  <p className="text-center">
+                    <a href="https://reactstrap.github.io/"><b>Reactstrap</b></a>&nbsp; | &nbsp;
+                    <a href="http://recharts.org/en-US/"><b>Recharts</b></a>&nbsp; | &nbsp;
+                    <a href="http://integral-table.com/"><b>Integral-Table</b></a>
+                  </p>
                   <h2><FontAwesomeIcon icon="calculator" /> How do I use it?</h2>
                   <hr/>
                   <p>
