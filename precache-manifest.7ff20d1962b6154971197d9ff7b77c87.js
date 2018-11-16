@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/static/media/KaTeX_Fraktur-Regular.c5b430bf.woff"
   },
   {
-    "revision": "ddc1737d7e0b02bc45e3",
+    "revision": "bed64c7b5855240da458",
     "url": "/static/css/main.c30a2241.chunk.css"
   },
   {
@@ -80,20 +80,16 @@ self.__precacheManifest = [
     "url": "/static/media/KaTeX_SansSerif-Regular.f9e06d59.woff2"
   },
   {
-    "revision": "ae1fad1f4d1c227c9d567da8ea9f988c",
-    "url": "/static/media/KaTeX_Script-Regular.ae1fad1f.woff2"
-  },
-  {
     "revision": "60febfa114c5e32f0ce73050476aa39f",
     "url": "/static/media/KaTeX_Script-Regular.60febfa1.woff"
   },
   {
-    "revision": "f2e296ef7cef0f6f16912e5d171929b2",
-    "url": "/static/media/KaTeX_Size1-Regular.f2e296ef.ttf"
+    "revision": "ae1fad1f4d1c227c9d567da8ea9f988c",
+    "url": "/static/media/KaTeX_Script-Regular.ae1fad1f.woff2"
   },
   {
-    "revision": "0767ede65042583bcc06f09055f4d7ca",
-    "url": "/static/media/KaTeX_Size2-Regular.0767ede6.ttf"
+    "revision": "f2e296ef7cef0f6f16912e5d171929b2",
+    "url": "/static/media/KaTeX_Size1-Regular.f2e296ef.ttf"
   },
   {
     "revision": "882f723427a0986846fe786bd8d6f6c7",
@@ -104,16 +100,20 @@ self.__precacheManifest = [
     "url": "/static/media/KaTeX_Size4-Regular.27901d5c.ttf"
   },
   {
+    "revision": "0767ede65042583bcc06f09055f4d7ca",
+    "url": "/static/media/KaTeX_Size2-Regular.0767ede6.ttf"
+  },
+  {
     "revision": "3f61a84d76e80396489d32bc9dd8d444",
     "url": "/static/media/KaTeX_Caligraphic-Bold.3f61a84d.ttf"
   },
   {
-    "revision": "950649ba5e5cfd37cdad74095411d350",
-    "url": "/static/media/KaTeX_Fraktur-Bold.950649ba.woff2"
-  },
-  {
     "revision": "c3bc8fcec0e85a50cabf71e4e8074991",
     "url": "/static/media/KaTeX_Caligraphic-Regular.c3bc8fce.ttf"
+  },
+  {
+    "revision": "950649ba5e5cfd37cdad74095411d350",
+    "url": "/static/media/KaTeX_Fraktur-Bold.950649ba.woff2"
   },
   {
     "revision": "1aca7ef7f976fb54a207ffc8aa180e38",
@@ -124,8 +124,8 @@ self.__precacheManifest = [
     "url": "/static/media/KaTeX_Fraktur-Regular.135ccd74.woff2"
   },
   {
-    "revision": "ddc1737d7e0b02bc45e3",
-    "url": "/static/js/main.ddc1737d.chunk.js"
+    "revision": "bed64c7b5855240da458",
+    "url": "/static/js/main.bed64c7b.chunk.js"
   },
   {
     "revision": "0719833c23aeba83786a29e84a165875",
@@ -248,7 +248,7 @@ self.__precacheManifest = [
     "url": "/static/css/1.1156b1e8.chunk.css"
   },
   {
-    "revision": "0f5a0b8b402a70d692365550a18b7930",
+    "revision": "93646bae77cbfbd042faaa818dd5f130",
     "url": "/index.html"
   }
 ];
