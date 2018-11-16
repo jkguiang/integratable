@@ -87,7 +87,7 @@ class IntegralCard extends Component {
                 else if (val.includes("pi")) {
                     if (val.includes("*")) {
                         var splitVal = (typeof(val === "object")) ? val : val.split("*");
-                        if (isNaN(splitVal[0]) || splitVal[1] !== "pi") {
+                        if (isNaN(splitVal[0]) || splitVal[splitVal.length-2] !== "pi") {
                             this.setState({ isGood: false });
                             return;
                         }
@@ -95,11 +95,15 @@ class IntegralCard extends Component {
                     else {
                         var coeff = value.substring(0, val.length-2);
                         if (isNaN(coeff)) {
-                            this.setState({ isGood: false });
-                            return;
+                            if (coeff === "-") {
+                                newMap[c] = ["0","1","-","pi","*"];
+                            }
+                            else {
+                                this.setState({ isGood: false });
+                                return;
+                            }
                         }
                         else {
-                            // newMap[c] = coeff+((coeff === "") ? "pi" : "*pi");
                             newMap[c] = (coeff === "") ? ["pi"] : [coeff,"pi","*"];
                         }
                     }
