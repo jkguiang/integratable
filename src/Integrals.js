@@ -6,7 +6,7 @@ import { Container,
          Collapse,
          Card, CardHeader, CardBody,
          Form, FormGroup, Input,
-         Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+         Modal, ModalHeader, ModalBody, ModalFooter, Alert } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './App.css';
 import 'katex/dist/katex.min.css';
@@ -188,13 +188,18 @@ class IntegralResult extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            response: ""
+            response: {"data":"", "success":true}
         };
     }
     componentDidMount() {
         const evaluated = Enumerate(this.props.query, this.props.constMap, 1);
-        const result = evaluated[1].y - evaluated[0].y;
-        this.setState({response: this.buildResponse(result)});
+        try {
+            const result = evaluated[1].y - evaluated[0].y;
+            this.setState({response: {"data":this.buildResponse(result), "success":true}});
+        }
+        catch(err) {
+            this.setState({response: {"data":err.stack, "success":false}});
+        }
     }
     buildResponse(result) {
     	if (result === "inf") {
@@ -226,13 +231,27 @@ class IntegralResult extends Component {
     	}
     }
     render() {
-        if (this.state.response !== "") {
-            return (
-                <React.Fragment>
-                  <BlockMath math={this.state.response} />
-                  <Plot query={this.props.plot} constMap={this.props.constMap} />
-                </React.Fragment>
-            );
+        if (this.state.response.data !== "") {
+            if (this.state.response.success === false) {
+                return (
+                    <React.Fragment>
+                      <h4><FontAwesomeIcon icon="skull-crossbones" /> Oh no!</h4>
+                      <p>
+                        Something went wrong, so sorry! If you can, please submit the intricate details of the torture you have subjected my poor website to <a href="https://github.com/jkguiang/integratable/issues"><b>here</b></a>, you horrible monster. Just kidding, but please do file an error report, it would be very helpful, thanks!
+                      </p>
+                      <p><b>Error Report:</b></p>
+                      <Alert color="dark"><pre><code>{this.state.response.data}</code></pre></Alert>
+                    </React.Fragment>
+                );
+            }
+            else {
+                return (
+                    <React.Fragment>
+                      <BlockMath math={this.state.response.data} />
+                      <Plot query={this.props.plot} constMap={this.props.constMap} />
+                    </React.Fragment>
+                );
+            }
         }
         else {
             return (

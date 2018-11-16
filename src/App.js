@@ -18,7 +18,8 @@ import {
   faStreetView,
   faAnchor,
   faCoffee,
-  faBug } from '@fortawesome/free-solid-svg-icons';
+  faBug,
+  faSkullCrossbones } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Container } from 'reactstrap';
 import './App.css';
@@ -50,7 +51,8 @@ library.add(
   faStreetView,
   faAnchor,
   faCoffee,
-  faBug );
+  faBug,
+  faSkullCrossbones );
 
 class MainNavbar extends Component {
     constructor(props) {
