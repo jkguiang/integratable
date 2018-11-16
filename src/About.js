@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Jumbotron, Container,
-         Dropdown, DropdownToggle,
-         DropdownMenu, DropdownItem  } from 'reactstrap';
+import { Jumbotron, Container } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './App.css';
 
