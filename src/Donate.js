@@ -29,17 +29,17 @@ class Donate extends Component {
                   <ul>
                     <li>Gabriel Hernandez</li>
                   </ul>
-                  <h5><FontAwesomeIcon icon="hands" /> Integral Paladin</h5>
+                  <h5><FontAwesomeIcon icon="hands" /> Integral Paladins</h5>
                   <p className="text-muted"><i>"Holy knights fiercely committed to the Path of the Integral. Provided at birth with nth-dimensional clairvoyance such that the indefinite integrals of all functions are made clear."</i></p>
                   <ul>
                     <li><i>For one coffee, you can become the first Integral Prophet!</i></li>
                   </ul>
-                  <h5><FontAwesomeIcon icon="dragon" /> Antiderivative Daemon</h5>
+                  <h5><FontAwesomeIcon icon="dragon" /> Antiderivative Daemons</h5>
                   <p className="text-muted"><i>"Non-euclidian entities tasked only with the ceaseless reversal of all derivatives. Dispense the secrets of the Antiderivative for a price..."</i></p>
                   <ul>
                     <li><i>For one coffee, you can become the first Antiderivative Daemon!</i></li>
                   </ul>
-                  <h5><FontAwesomeIcon icon="fist-raised" /> Antiderivative Champion</h5>
+                  <h5><FontAwesomeIcon icon="fist-raised" /> Antiderivative Champions</h5>
                   <p className="text-muted"><i>"Warrior of Direct Integration imbued with an ability of numerical integration unrivaled by any mortal. Knows only the glory of battle in the endless struggle against derivation."</i></p>
                   <ul>
                     <li><i>For one coffee, you can become the first Antiderivative Champion!</i></li>
