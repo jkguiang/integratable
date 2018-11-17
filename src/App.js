@@ -62,8 +62,10 @@ class MainNavbar extends Component {
           <header className="blog-header py-3">
             <LinkContainer to="/">
               <div className="text-center">
-                <img src={icon} alt="" style={{height: "2.25rem",verticalAlign:"top"}} />
-                <span><a className="blog-header-logo text-dark" href="/">Integratable</a></span>
+                <a className="blog-header-logo text-dark" href="/">
+                  <img src={icon} alt="" style={{height: "2.25rem",verticalAlign:"top"}} />
+                  <span>Integratable</span>
+                </a>
               </div>
             </LinkContainer>
           </header>
