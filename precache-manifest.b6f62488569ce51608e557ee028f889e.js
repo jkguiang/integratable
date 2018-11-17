@@ -1,10 +1,10 @@
 self.__precacheManifest = [
   {
-    "revision": "c5b430bfcb3e5423b77401afcdb69b66",
-    "url": "/static/media/KaTeX_Fraktur-Regular.c5b430bf.woff"
+    "revision": "c3bc8fcec0e85a50cabf71e4e8074991",
+    "url": "/static/media/KaTeX_Caligraphic-Regular.c3bc8fce.ttf"
   },
   {
-    "revision": "8ba024a0245a3c08db8e",
+    "revision": "9508000d4d3e0b3f8d11",
     "url": "/static/css/main.c30a2241.chunk.css"
   },
   {
@@ -56,12 +56,12 @@ self.__precacheManifest = [
     "url": "/static/media/KaTeX_Caligraphic-Bold.970d3e76.woff2"
   },
   {
-    "revision": "0ef0f2e356a2e1c457b6585d34edae77",
-    "url": "/static/media/KaTeX_Caligraphic-Regular.0ef0f2e3.woff2"
-  },
-  {
     "revision": "445f96a387df0d13ded71f27c608516d",
     "url": "/static/media/KaTeX_Caligraphic-Bold.445f96a3.woff"
+  },
+  {
+    "revision": "0ef0f2e356a2e1c457b6585d34edae77",
+    "url": "/static/media/KaTeX_Caligraphic-Regular.0ef0f2e3.woff2"
   },
   {
     "revision": "74f6918c7d2b768ffd32048102bc0172",
@@ -96,12 +96,12 @@ self.__precacheManifest = [
     "url": "/static/media/KaTeX_Size2-Regular.0767ede6.ttf"
   },
   {
-    "revision": "27901d5ce93d8971c416d9123fedb911",
-    "url": "/static/media/KaTeX_Size4-Regular.27901d5c.ttf"
-  },
-  {
     "revision": "882f723427a0986846fe786bd8d6f6c7",
     "url": "/static/media/KaTeX_Size3-Regular.882f7234.ttf"
+  },
+  {
+    "revision": "27901d5ce93d8971c416d9123fedb911",
+    "url": "/static/media/KaTeX_Size4-Regular.27901d5c.ttf"
   },
   {
     "revision": "3f61a84d76e80396489d32bc9dd8d444",
@@ -112,10 +112,6 @@ self.__precacheManifest = [
     "url": "/static/media/KaTeX_Fraktur-Bold.950649ba.woff2"
   },
   {
-    "revision": "c3bc8fcec0e85a50cabf71e4e8074991",
-    "url": "/static/media/KaTeX_Caligraphic-Regular.c3bc8fce.ttf"
-  },
-  {
     "revision": "1aca7ef7f976fb54a207ffc8aa180e38",
     "url": "/static/media/KaTeX_Fraktur-Bold.1aca7ef7.woff"
   },
@@ -124,8 +120,12 @@ self.__precacheManifest = [
     "url": "/static/media/KaTeX_Fraktur-Regular.135ccd74.woff2"
   },
   {
-    "revision": "8ba024a0245a3c08db8e",
-    "url": "/static/js/main.8ba024a0.chunk.js"
+    "revision": "c5b430bfcb3e5423b77401afcdb69b66",
+    "url": "/static/media/KaTeX_Fraktur-Regular.c5b430bf.woff"
+  },
+  {
+    "revision": "9508000d4d3e0b3f8d11",
+    "url": "/static/js/main.9508000d.chunk.js"
   },
   {
     "revision": "0719833c23aeba83786a29e84a165875",
@@ -196,28 +196,32 @@ self.__precacheManifest = [
     "url": "/static/media/KaTeX_AMS-Regular.ac1d46d9.woff"
   },
   {
-    "revision": "a9509497466d16e6b7265a223ea39093",
-    "url": "/static/media/KaTeX_Fraktur-Regular.a9509497.ttf"
-  },
-  {
     "revision": "e11e6bf02fc41279a540d3655abf3b07",
     "url": "/static/media/KaTeX_Fraktur-Bold.e11e6bf0.ttf"
+  },
+  {
+    "revision": "a9509497466d16e6b7265a223ea39093",
+    "url": "/static/media/KaTeX_Fraktur-Regular.a9509497.ttf"
   },
   {
     "revision": "0ba875a1d548ebfdd00c7594022e01b7",
     "url": "/static/media/KaTeX_Main-Bold.0ba875a1.woff"
   },
   {
-    "revision": "1fd21713706a2b70960faf21b1fa4e26",
-    "url": "/static/media/KaTeX_Main-Regular.1fd21713.woff"
-  },
-  {
     "revision": "29b27903a08a71f8171be21ba413d4dd",
     "url": "/static/media/KaTeX_Main-Regular.29b27903.woff2"
   },
   {
+    "revision": "1fd21713706a2b70960faf21b1fa4e26",
+    "url": "/static/media/KaTeX_Main-Regular.1fd21713.woff"
+  },
+  {
     "revision": "9123667cef81279761df5cd62ec8c46e",
     "url": "/static/media/KaTeX_SansSerif-Bold.9123667c.ttf"
+  },
+  {
+    "revision": "6b9645af6e119fd5d85f24e21044ed03",
+    "url": "/static/media/KaTeX_Typewriter-Regular.6b9645af.ttf"
   },
   {
     "revision": "bdbadb27e05fb8e51da903db59f90d77",
@@ -232,10 +236,6 @@ self.__precacheManifest = [
     "url": "/static/media/KaTeX_Math-Italic.10740d74.ttf"
   },
   {
-    "revision": "6b9645af6e119fd5d85f24e21044ed03",
-    "url": "/static/media/KaTeX_Typewriter-Regular.6b9645af.ttf"
-  },
-  {
     "revision": "aaaa1b761b7cc9d5e10b85f30731b878",
     "url": "/static/media/KaTeX_Main-Bold.aaaa1b76.ttf"
   },
@@ -248,7 +248,7 @@ self.__precacheManifest = [
     "url": "/static/css/1.1156b1e8.chunk.css"
   },
   {
-    "revision": "fd1f4db84970a079636054523ea56760",
+    "revision": "fa7c9f86248b6a0b857658c397d06c7d",
     "url": "/index.html"
   }
 ];
