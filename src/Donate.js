@@ -32,7 +32,7 @@ class Donate extends Component {
                   <h5><FontAwesomeIcon icon="hands" /> Integral Paladins</h5>
                   <p className="text-muted"><i>"Holy knights fiercely committed to the Path of the Integral. Provided at birth with nth-dimensional clairvoyance such that the indefinite integrals of all functions are made clear."</i></p>
                   <ul>
-                    <li><i>For one coffee, you can become the first Integral Prophet!</i></li>
+                    <li><i>For one coffee, you can become the first Integral Paladin!</i></li>
                   </ul>
                   <h5><FontAwesomeIcon icon="dragon" /> Antiderivative Daemons</h5>
                   <p className="text-muted"><i>"Non-euclidian entities tasked only with the ceaseless reversal of all derivatives. Dispense the secrets of the Antiderivative for a price..."</i></p>
