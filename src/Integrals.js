@@ -7,7 +7,7 @@ import { Container,
          Card, CardHeader, CardBody,
          Form, FormGroup, Input,
          Modal, ModalHeader, ModalBody, ModalFooter, Alert,
-         Popover, PopoverBody } from 'reactstrap';
+         Popover, PopoverBody, UncontrolledTooltip } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './App.css';
 import 'katex/dist/katex.min.css';
@@ -156,23 +156,32 @@ class IntegralCard extends Component {
                         <textarea ref={(textarea) => this.textArea = textarea} style={{height:"0",width:"0",opacity:"0"}} value={this.props.integral+"\\biggr|_{x=a}^{x=b}"+this.props.restrict} readOnly />
                       </Form>
                       <Row className="text-center">
-                          <Col md={4}>
-                            <Button color="link" href={base+"#"+this.props.index} style={(isAnchored) ? anchorStyle : {paddingTop: "0"}}>
+                          <Col xs={4}>
+                            <Button id={"toAnchor"+this.props.index} color="link" href={base+"#"+this.props.index} style={(isAnchored) ? anchorStyle : {paddingTop: "0"}}>
                               <FontAwesomeIcon icon="anchor" />
                             </Button>
+                            <UncontrolledTooltip placement="top" target={"toAnchor"+this.props.index}>
+                              Anchor to URL
+                            </UncontrolledTooltip>
                           </Col>
-                          <Col md={4}>
+                          <Col xs={4}>
                             <Button id={"toClipboard"+this.props.index} color="link" style={{paddingTop: "0", color:"#000"}} onClick={this.handleCopy}>
                               {(this.state.isCopied) ? <FontAwesomeIcon icon="clipboard-check" /> : <FontAwesomeIcon icon="clipboard" />}
                             </Button>
                             <Popover placement="bottom" isOpen={this.state.isCopied} target={"toClipboard"+this.props.index} toggle={this.handleCopy}>
                               <PopoverBody>LaTeX copied to clipboard!</PopoverBody>
                             </Popover>
+                            <UncontrolledTooltip placement="top" target={"toClipboard"+this.props.index}>
+                              Copy LaTeX to clipboard
+                            </UncontrolledTooltip>
                           </Col>
-                          <Col md={4}>
-                            <Button color="link" style={{paddingTop: "0", color:"#000"}} onClick={this.handleClear}>
+                          <Col xs={4}>
+                            <Button id={"toClear"+this.props.index} color="link" style={{paddingTop: "0", color:"#000"}} onClick={this.handleClear}>
                               <FontAwesomeIcon icon="undo-alt" />
                             </Button>
+                            <UncontrolledTooltip placement="top" target={"toClear"+this.props.index}>
+                              Clear input form
+                            </UncontrolledTooltip>
                           </Col>
                       </Row>
                        <Button outline color={(this.state.isGood) ? "success" : "danger"} block onClick={this.toggle} disabled={!this.state.isGood}>
