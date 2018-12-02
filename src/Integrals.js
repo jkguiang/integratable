@@ -27,6 +27,7 @@ class IntegralCard extends Component {
         this.state = {
             showModal: false,
             isGood: false,
+            input: this.initMap(),
             constMap: this.initMap(),
             isCopied: false
         };
@@ -47,6 +48,7 @@ class IntegralCard extends Component {
     handleClear() {
         this.setState({
             isGood: false,
+            input: this.initMap(),
             constMap: this.initMap()
         });
     }
@@ -59,8 +61,10 @@ class IntegralCard extends Component {
         var constant = evt.target.id;
         var value = evt.target.value;
         var newMap = this.state.constMap;
+        var newInput = this.state.input;
         var passed = true;
         newMap[constant] = value;
+        newInput[constant] = value;
         for (var c in newMap) {
             var val = newMap[c];
             if (isNaN(val) || val === "") {
@@ -104,7 +108,8 @@ class IntegralCard extends Component {
         }
         this.setState({
             isGood: passed,
-            constMap: newMap
+            constMap: newMap,
+            input: newInput
         });
         return;
     }
@@ -132,7 +137,7 @@ class IntegralCard extends Component {
               </Col>
               <Col md={10}>
                 <FormGroup>
-                  <Input value={this.state.constMap[constant]} type="text" name={constant} id={constant} onChange={this.updateMap} key={constant+String(index)} />
+                  <Input value={this.state.input[constant]} type="text" name={constant} id={constant} onChange={this.updateMap} key={constant+String(index)} />
                 </FormGroup>
               </Col>
             </Row>
