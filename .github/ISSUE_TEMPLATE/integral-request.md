@@ -2,7 +2,7 @@
 name: Integral request
 about: Suggest an idea for this project
 title: ''
-labels: ''
+labels: new integral
 assignees: ''
 
 ---
