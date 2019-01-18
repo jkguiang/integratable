@@ -108,7 +108,7 @@ class MainNavbar extends Component {
                 </DropdownMenu>
               </Dropdown>
               <NavItem>
-                <NavLink href="https://github.com/jkguiang/integratable"><FontAwesomeIcon icon={['fab', 'github']}/> Github</NavLink>
+                <NavLink href="https://github.com/jkguiang/integratable" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={['fab', 'github']}/> Github</NavLink>
               </NavItem>
               <LinkContainer to="/donate">
                 <NavItem>
@@ -141,7 +141,7 @@ class App extends Component {
                 <Route exact path="/about" component={About}/>
                 <Route exact path="/donate" component={Donate}/>
                 <hr/>
-                <p className="text-muted text-center"><i><FontAwesomeIcon icon="bug" /> Please report any errors or post feature requests <a href="https://github.com/jkguiang/integratable/issues"><b>here</b></a>, thanks!</i></p>
+                <p className="text-muted text-center"><i><FontAwesomeIcon icon="bug" /> Please report any errors or post feature requests <a href="https://github.com/jkguiang/integratable/issues" target="_blank" rel="noopener noreferrer"><b>here</b></a>, thanks!</i></p>
               </Container>
             </Router>
         );
