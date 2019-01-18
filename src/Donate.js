@@ -37,7 +37,7 @@ class Donate extends Component {
                   <h5><FontAwesomeIcon icon="dragon" /> Antiderivative Daemons</h5>
                   <p className="text-muted"><i>"Non-euclidian entities tasked only with the ceaseless reversal of all derivatives. Dispense the secrets of the Antiderivative for a price..."</i></p>
                   <ul>
-                    <li><i>For one coffee, you can become the first Antiderivative Daemon!</i></li>
+                    <li>Joey Incandela</li>
                   </ul>
                   <h5><FontAwesomeIcon icon="fist-raised" /> Antiderivative Champions</h5>
                   <p className="text-muted"><i>"Warrior of Direct Integration imbued with an ability of numerical integration unrivaled by any mortal. Knows only the glory of battle in the endless struggle against derivation."</i></p>

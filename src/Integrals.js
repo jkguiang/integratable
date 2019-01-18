@@ -113,6 +113,13 @@ class IntegralCard extends Component {
         });
         return;
     }
+    componentDidMount() {
+        var url = (window.location.href.split("#"));
+        if (url[url.length-1] === String(this.props.index)) {
+            const element = document.getElementById(this.props.index);
+            element.scrollIntoView({ behavior: "smooth" });
+        }
+    }
     render() {
         var url = (window.location.href.split("#"));
         var base = (url.length < 3) ? window.location.href : (window.location.href).split("#"+url[url.length-1])[0];
