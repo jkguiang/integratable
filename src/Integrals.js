@@ -353,4 +353,4 @@ class AllIntegrals extends Component {
     }
 }
 
-export { Integrals, AllIntegrals };
+export { Integrals, AllIntegrals, IntegralCard };
