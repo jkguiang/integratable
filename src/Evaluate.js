@@ -168,7 +168,6 @@ export function Enumerate(query, constMap, nPoints) {
     var toReplace = [];
     for (var c in constMap) {
         if (isNaN(constMap[c])) {
-            console.log(constMap[c]);
             constMap[c] = Evaluator(constMap[c]);
         }
     }
