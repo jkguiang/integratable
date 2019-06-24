@@ -162,7 +162,7 @@ function Evaluator(postfix) {
     return stack[0];
 }
 
-export function Enumerate(query, constMap, nPoints) {
+export function Enumerate(query, constMap, nPoints=null) {
     var postfix = ToPostfix(query);
     var toEvaluate = [];
     var toReplace = [];
@@ -186,11 +186,12 @@ export function Enumerate(query, constMap, nPoints) {
     var data = [];
     const a = Number(constMap["a"]);
     const b = Number(constMap["b"]);
-    const inc = Math.abs(b-a)/nPoints;
-    if (inc === 0) {
-        return [{x: 0, y: 0}, {x:0, y:0}];
+    const p = (nPoints == null) ? Math.round((500*Math.abs(a-b))/(10+Math.abs(a-b))) : nPoints;
+    if (p === 0) {
+        return [{x:a, y: 0}, {x:b, y:0}];
     }
     else {
+        const inc = (a === b) ? 0 : Math.abs(a-b)/(p);
         for (var x = Math.min(a,b); x <= Math.max(a,b); x+=inc) {
             for (var j = 0; j < toReplace.length; j++) {
                 toEvaluate[toReplace[j]] = String(x);

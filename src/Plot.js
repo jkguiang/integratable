@@ -15,7 +15,8 @@ class Plot extends Component {
         };
     }
     componentDidMount() {
-        var data = Enumerate(this.props.query, this.props.constMap, 50);
+        console.log(this.props.constMap);
+        var data = Enumerate(this.props.query, this.props.constMap);
         this.setState({data: data});
     }
     render() {
