@@ -47,10 +47,10 @@ const TrigDB = [
         "plot": "(sin(c*x))*(cos(c*x))"
     },
     {
-        "integral": "\\int_a^b \\sin(Ax)\\cos(Bx) dx = \\frac{\\cos[(A-B)x]}{2(A-B)}-\\frac{\\cos[(A+B)x]}{2(A+B)}",
+        "integral": "\\int_a^b \\sin(Ax)\\cos(Bx) dx = -\\frac{\\cos[(A+B)x]}{2(A+B)}-\\frac{\\cos[(A-B)x]}{2(A-B)}",
         "restrict":"\\textnormal{, } A \\neq B",
         "constants": ["a","b","A","B"],
-        "query": "(cos((A-B)*x))/(2*(A-B))-(cos((A+B)*x))/(2*(A+B))",
+        "query": "(cos((A-B)*x))/(2*(B-A))-(cos((A+B)*x))/(2*(A+B))",
         "plot": "(sin(A*x))*(cos(B*x))"
     },
     {
