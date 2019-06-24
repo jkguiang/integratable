@@ -41,6 +41,12 @@ const TrigDB = [
         "plot": "cos(c*x)^(3)"
     },
     {
+        "integral": "\\int_a^b \\sin(cx)\\cos(cx) dx = \\frac{\\sin^2(cx)}{2c}",
+        "constants": ["a","b","c"],
+        "query": "(sin(c*x)^2)/(2*c)",
+        "plot": "(sin(c*x))*(cos(c*x))"
+    },
+    {
         "integral": "\\int_a^b \\sin(Ax)\\cos(Bx) dx = \\frac{\\cos[(A-B)x]}{2(A-B)}-\\frac{\\cos[(A+B)x]}{2(A+B)}",
         "restrict":"\\textnormal{, } A \\neq B",
         "constants": ["a","b","A","B"],
@@ -48,17 +54,15 @@ const TrigDB = [
         "plot": "(sin(A*x))*(cos(B*x))"
     },
     {
-        "integral": "\\int_a^b \\sin^{2}(Ax)\\cos(Bx) dx = \\frac{\\cos[(A-B)x]}{2(A-B)}+\\frac{\\sin(Bx)}{2B}-\\frac{\\cos[(A+B)x]}{2(A+B)}",
-        "restrict":"\\textnormal{, } A \\neq B",
+        "integral": "\\int_a^b \\sin^{2}(Ax)\\cos(Bx) dx = -\\frac{\\sin[(2A-B)x]}{4(2A-B)}+\\frac{\\sin(Bx)}{2B}-\\frac{\\sin[(2A+B)x]}{4(2A+B)}",
         "constants": ["a","b","A","B"],
-        "query": "(cos((A-B)*x))/(2*(A-B))+(sin(B*x))/(2*B)-(cos((A+B)*x))/(2*(A+B))",
+        "query": "(sin(B*x))/(2*B)-(sin((2*A-B)*x))/(4*(2*A-B))-(sin((2*A+B)*x))/(4*(2*A+B))",
         "plot": "(sin(A*x)^(2))*(cos(B*x))"
     },
     {
-        "integral": "\\int_a^b \\sin(Ax)\\cos^{2}(Bx) dx = \\frac{\\cos[(A-B)x]}{2(A-B)}-\\frac{\\cos(Bx)}{2B}-\\frac{\\cos[(A+B)x]}{2(A+B)}",
-        "restrict":"\\textnormal{, } A \\neq B",
+        "integral": "\\int_a^b \\sin(Ax)\\cos^{2}(Bx) dx = \\frac{\\cos[(2A-B)x]}{4(2A-B)}-\\frac{\\cos(Bx)}{2B}-\\frac{\\cos[(2A+B)x]}{4(2A+B)}",
         "constants": ["a","b","A","B"],
-        "query": "(cos((A-B)*x))/(2*(A-B))-(cos(B*x))/(2*B)-(cos((A+B)*x))/(2*(A+B))",
+        "query": "(cos((2*A-B)*x))/(4*(2*A-B))-(cos(B*x))/(2*B)-(cos((2*A+B)*x))/(4*(2*A+B))",
         "plot": "(sin(A*x))*(cos(B*x)^(2))"
     },
 ];
