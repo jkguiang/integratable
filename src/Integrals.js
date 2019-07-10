@@ -14,6 +14,7 @@ import 'katex/dist/katex.min.css';
 import { InlineMath, BlockMath } from 'react-katex';
 import { Enumerate } from './Evaluate';
 import Plot from './Plot'
+import ReactGA from 'react-ga';
 
 class IntegralCard extends Component {
     constructor(props) {
@@ -53,6 +54,15 @@ class IntegralCard extends Component {
         });
     }
     toggle() {
+        if (!this.state.showModal) {
+            var curPage = window.location.hash.split("#")[1];
+            var integralType = curPage.split("/")[1];
+            ReactGA.event({
+                category: "INTEGRAL",
+                action: "Evaluated "+integralType+" integral #"+this.props.index,
+                label: "INTEGRAL_EVAL"
+            });
+        }
         this.setState({
             showModal: !this.state.showModal
         });

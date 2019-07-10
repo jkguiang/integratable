@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory'
 import { LinkContainer } from 'react-router-bootstrap';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
@@ -25,6 +26,8 @@ import { RadicalIntegrals } from './RadicalIntegrals';
 import { LogIntegrals } from './LogIntegrals';
 import { ExponentialIntegrals } from './ExponentialIntegrals';
 import { TrigIntegrals } from './TrigIntegrals';
+import { GA_TRACKING_ID } from './secrets';
+import ReactGA from 'react-ga';
 
 // Load icons
 library.add(
@@ -39,90 +42,97 @@ library.add(
 
 class MainNavbar extends Component {
     constructor(props) {
-      super(props);
-
-      this.toggle = this.toggle.bind(this);
-      this.state = {
-        dropdownOpen: false
-      };
+        super(props);
+  
+        this.toggle = this.toggle.bind(this);
+        this.state = {
+            dropdownOpen: false
+        };
     }
-
     toggle() {
-      this.setState({
-        dropdownOpen: !this.state.dropdownOpen
-      });
+        this.setState({
+            dropdownOpen: !this.state.dropdownOpen
+        });
     }
-  render() {
-      var navStyle = {
-          paddingTop: "5px",
-          paddingBottom: "15px"
-      }
-    return (
-        <React.Fragment>
-          <header className="blog-header py-3">
-            <LinkContainer to="/">
-              <div className="text-center">
-                <a className="blog-header-logo text-dark" href="/">
-                  <img src={icon} alt="" style={{height: "2.25rem",verticalAlign:"top"}} />
-                  <span>Integratable</span>
-                </a>
+    render() {
+        var navStyle = {
+            paddingTop: "5px",
+            paddingBottom: "15px"
+        }
+        return (
+            <React.Fragment>
+              <header className="blog-header py-3">
+                <LinkContainer to="/">
+                  <div className="text-center">
+                    <a className="blog-header-logo text-dark" href="/">
+                      <img src={icon} alt="" style={{height: "2.25rem",verticalAlign:"top"}} />
+                      <span>Integratable</span>
+                    </a>
+                  </div>
+                </LinkContainer>
+              </header>
+              <div style={navStyle}>
+                <Nav pills className="justify-content-center">
+                  <LinkContainer to="/about">
+                    <NavItem>
+                      <NavLink href="/about"><FontAwesomeIcon icon="info-circle" /> About</NavLink>
+                    </NavItem>
+                  </LinkContainer>
+                  <LinkContainer to="/">
+                    <NavItem>
+                      <NavLink href="/"><FontAwesomeIcon icon="home" /> Home</NavLink>
+                    </NavItem>
+                  </LinkContainer>
+                  <Dropdown nav isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                    <DropdownToggle nav caret>
+                      Integrals
+                    </DropdownToggle>
+                    <DropdownMenu>
+                      <LinkContainer to="/basic">
+                        <DropdownItem>Basic</DropdownItem>
+                      </LinkContainer>
+                      <DropdownItem divider />
+                      <LinkContainer to="/rational">
+                        <DropdownItem>Rational Functions</DropdownItem>
+                      </LinkContainer>
+                      <LinkContainer to="/radical">
+                        <DropdownItem>Radical Functions</DropdownItem>
+                      </LinkContainer>
+                      <LinkContainer to="/logs">
+                        <DropdownItem>Logarithms</DropdownItem>
+                      </LinkContainer>
+                      <LinkContainer to="/exponentials">
+                        <DropdownItem>Exponentials</DropdownItem>
+                      </LinkContainer>
+                      <LinkContainer to="/trig">
+                        <DropdownItem>Trig Functions</DropdownItem>
+                      </LinkContainer>
+                    </DropdownMenu>
+                  </Dropdown>
+                  <NavItem>
+                    <NavLink href="https://github.com/jkguiang/integratable" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={['fab', 'github']}/> Github</NavLink>
+                  </NavItem>
+                  <LinkContainer to="/donate">
+                    <NavItem>
+                      <NavLink href="/donate"><FontAwesomeIcon icon="heart" /> Donate</NavLink>
+                    </NavItem>
+                  </LinkContainer>
+                </Nav>
               </div>
-            </LinkContainer>
-          </header>
-          <div style={navStyle}>
-            <Nav pills className="justify-content-center">
-              <LinkContainer to="/about">
-                <NavItem>
-                  <NavLink href="/about"><FontAwesomeIcon icon="info-circle" /> About</NavLink>
-                </NavItem>
-              </LinkContainer>
-              <LinkContainer to="/">
-                <NavItem>
-                  <NavLink href="/"><FontAwesomeIcon icon="home" /> Home</NavLink>
-                </NavItem>
-              </LinkContainer>
-              <Dropdown nav isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-                <DropdownToggle nav caret>
-                  Integrals
-                </DropdownToggle>
-                <DropdownMenu>
-                  <LinkContainer to="/basic">
-                    <DropdownItem>Basic</DropdownItem>
-                  </LinkContainer>
-                  <DropdownItem divider />
-                  <LinkContainer to="/rational">
-                    <DropdownItem>Rational Functions</DropdownItem>
-                  </LinkContainer>
-                  <LinkContainer to="/radical">
-                    <DropdownItem>Radical Functions</DropdownItem>
-                  </LinkContainer>
-                  <LinkContainer to="/logs">
-                    <DropdownItem>Logarithms</DropdownItem>
-                  </LinkContainer>
-                  <LinkContainer to="/exponentials">
-                    <DropdownItem>Exponentials</DropdownItem>
-                  </LinkContainer>
-                  <LinkContainer to="/trig">
-                    <DropdownItem>Trig Functions</DropdownItem>
-                  </LinkContainer>
-                </DropdownMenu>
-              </Dropdown>
-              <NavItem>
-                <NavLink href="https://github.com/jkguiang/integratable" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={['fab', 'github']}/> Github</NavLink>
-              </NavItem>
-              <LinkContainer to="/donate">
-                <NavItem>
-                  <NavLink href="/donate"><FontAwesomeIcon icon="heart" /> Donate</NavLink>
-                </NavItem>
-              </LinkContainer>
-            </Nav>
-          </div>
-        </React.Fragment>
-    );
-  }
+            </React.Fragment>
+        );
+    }
 }
 
 class App extends Component {
+    componentDidMount() {
+        // Initialize Google Analytics
+        ReactGA.initialize(GA_TRACKING_ID);
+        const history = createHistory();
+        history.listen((location, action) => {
+            ReactGA.pageview(location.hash.split("#")[1]);
+        });
+    }
     render() {
         var appStyle = {
             minWidth: "768px"
