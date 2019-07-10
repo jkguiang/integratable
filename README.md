@@ -20,9 +20,4 @@
 If you wish to have an integral added, you may request it [here](https://github.com/jkguiang/integratable/issues/new/choose) by selecting and filling out the "Request Integral" issue template.
 
 ## Offline Usage
-It is possible to use Integratable offline:
-1. Clone this repository or download the latest release.
-2. Navigate into the integratable directory and run `npm install` from the command line to install the necessary dependencies (tested for NPM version 6.9.0).
-3. Run Integratable by running `npm start`.
-
-_Note: with the recent addition of Google Analytics support, you will have to comment out these [imports](https://github.com/jkguiang/integratable/blob/master/src/App.js#L29-L30) and these [lines](https://github.com/jkguiang/integratable/blob/master/src/App.js#L129-L134). Otherwise, you will see an error pertaining to a missing file called `secrets.js` where the GA tracking ID is supposed to be stored. Alternatively, you may sift through the gh-pages branch to find it, or you can supply your own `GA_TRACKING_ID`._
+It is possible to use Integratable offline by downloading this [release](https://github.com/jkguiang/integratable/releases/tag/v1.0.0) of Integratable and following the steps in the description there.
