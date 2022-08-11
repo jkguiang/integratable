@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
-import createHistory from 'history/createBrowserHistory'
 import { LinkContainer } from 'react-router-bootstrap';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
@@ -26,8 +25,6 @@ import { RadicalIntegrals } from './RadicalIntegrals';
 import { LogIntegrals } from './LogIntegrals';
 import { ExponentialIntegrals } from './ExponentialIntegrals';
 import { TrigIntegrals } from './TrigIntegrals';
-import { GA_TRACKING_ID } from './secrets';
-import ReactGA from 'react-ga';
 
 // Load icons
 library.add(
@@ -125,14 +122,6 @@ class MainNavbar extends Component {
 }
 
 class App extends Component {
-    componentDidMount() {
-        // Initialize Google Analytics
-        ReactGA.initialize(GA_TRACKING_ID);
-        const history = createHistory();
-        history.listen((location, action) => {
-            ReactGA.pageview(location.hash.split("#")[1]);
-        });
-    }
     render() {
         var appStyle = {
             minWidth: "768px"
