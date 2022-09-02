@@ -24,10 +24,6 @@ self.__precacheManifest = [
     "url": "/integratable/static/media/icon.d1d38d27.ico"
   },
   {
-    "revision": "f48e83b7bcaa68a86a78e8edfee1a04e",
-    "url": "/integratable/static/media/KaTeX_Size2-Regular.f48e83b7.woff"
-  },
-  {
     "revision": "fda0824e8cfb676664ad063c367cfce3",
     "url": "/integratable/static/media/KaTeX_Size1-Regular.fda0824e.woff2"
   },
@@ -36,12 +32,12 @@ self.__precacheManifest = [
     "url": "/integratable/static/media/KaTeX_Size1-Regular.1d6cf6b8.woff"
   },
   {
-    "revision": "a7a0eb93afb696cb9b4efb87e6cd45a3",
-    "url": "/integratable/static/media/KaTeX_Size2-Regular.a7a0eb93.woff2"
+    "revision": "f48e83b7bcaa68a86a78e8edfee1a04e",
+    "url": "/integratable/static/media/KaTeX_Size2-Regular.f48e83b7.woff"
   },
   {
-    "revision": "3c14ed11dd8eea981c93bf283193856d",
-    "url": "/integratable/static/media/KaTeX_Size4-Regular.3c14ed11.woff2"
+    "revision": "a7a0eb93afb696cb9b4efb87e6cd45a3",
+    "url": "/integratable/static/media/KaTeX_Size2-Regular.a7a0eb93.woff2"
   },
   {
     "revision": "397bd6872be7adff4f000c49fa85a9c3",
@@ -52,16 +48,20 @@ self.__precacheManifest = [
     "url": "/integratable/static/media/KaTeX_Size3-Regular.0387ab38.woff"
   },
   {
+    "revision": "3c14ed11dd8eea981c93bf283193856d",
+    "url": "/integratable/static/media/KaTeX_Size4-Regular.3c14ed11.woff2"
+  },
+  {
     "revision": "726db3bd435c8a6e45e44741dae67263",
     "url": "/integratable/static/media/KaTeX_Size4-Regular.726db3bd.woff"
   },
   {
-    "revision": "970d3e76493b82fccf21ad5888ddee77",
-    "url": "/integratable/static/media/KaTeX_Caligraphic-Bold.970d3e76.woff2"
-  },
-  {
     "revision": "445f96a387df0d13ded71f27c608516d",
     "url": "/integratable/static/media/KaTeX_Caligraphic-Bold.445f96a3.woff"
+  },
+  {
+    "revision": "970d3e76493b82fccf21ad5888ddee77",
+    "url": "/integratable/static/media/KaTeX_Caligraphic-Bold.970d3e76.woff2"
   },
   {
     "revision": "0ef0f2e356a2e1c457b6585d34edae77",
@@ -72,10 +72,6 @@ self.__precacheManifest = [
     "url": "/integratable/static/media/KaTeX_Caligraphic-Regular.74f6918c.woff"
   },
   {
-    "revision": "1057b70228cb6936e7714e7817db6ce2",
-    "url": "/integratable/static/media/KaTeX_SansSerif-Italic.1057b702.woff2"
-  },
-  {
     "revision": "e38d0f6844b9520510715fd989bdd5bd",
     "url": "/integratable/static/media/KaTeX_SansSerif-Bold.e38d0f68.woff2"
   },
@@ -84,36 +80,40 @@ self.__precacheManifest = [
     "url": "/integratable/static/media/KaTeX_SansSerif-Regular.f9e06d59.woff2"
   },
   {
-    "revision": "ae1fad1f4d1c227c9d567da8ea9f988c",
-    "url": "/integratable/static/media/KaTeX_Script-Regular.ae1fad1f.woff2"
+    "revision": "1057b70228cb6936e7714e7817db6ce2",
+    "url": "/integratable/static/media/KaTeX_SansSerif-Italic.1057b702.woff2"
   },
   {
     "revision": "60febfa114c5e32f0ce73050476aa39f",
     "url": "/integratable/static/media/KaTeX_Script-Regular.60febfa1.woff"
   },
   {
-    "revision": "0767ede65042583bcc06f09055f4d7ca",
-    "url": "/integratable/static/media/KaTeX_Size2-Regular.0767ede6.ttf"
+    "revision": "ae1fad1f4d1c227c9d567da8ea9f988c",
+    "url": "/integratable/static/media/KaTeX_Script-Regular.ae1fad1f.woff2"
   },
   {
-    "revision": "882f723427a0986846fe786bd8d6f6c7",
-    "url": "/integratable/static/media/KaTeX_Size3-Regular.882f7234.ttf"
+    "revision": "0767ede65042583bcc06f09055f4d7ca",
+    "url": "/integratable/static/media/KaTeX_Size2-Regular.0767ede6.ttf"
   },
   {
     "revision": "f2e296ef7cef0f6f16912e5d171929b2",
     "url": "/integratable/static/media/KaTeX_Size1-Regular.f2e296ef.ttf"
   },
   {
+    "revision": "882f723427a0986846fe786bd8d6f6c7",
+    "url": "/integratable/static/media/KaTeX_Size3-Regular.882f7234.ttf"
+  },
+  {
     "revision": "27901d5ce93d8971c416d9123fedb911",
     "url": "/integratable/static/media/KaTeX_Size4-Regular.27901d5c.ttf"
   },
   {
-    "revision": "c3bc8fcec0e85a50cabf71e4e8074991",
-    "url": "/integratable/static/media/KaTeX_Caligraphic-Regular.c3bc8fce.ttf"
-  },
-  {
     "revision": "3f61a84d76e80396489d32bc9dd8d444",
     "url": "/integratable/static/media/KaTeX_Caligraphic-Bold.3f61a84d.ttf"
+  },
+  {
+    "revision": "c3bc8fcec0e85a50cabf71e4e8074991",
+    "url": "/integratable/static/media/KaTeX_Caligraphic-Regular.c3bc8fce.ttf"
   },
   {
     "revision": "950649ba5e5cfd37cdad74095411d350",
@@ -148,16 +148,16 @@ self.__precacheManifest = [
     "url": "/integratable/static/media/KaTeX_SansSerif-Bold.84299b01.woff"
   },
   {
-    "revision": "95c5a3d43efbcb8c14184d00a7c5eed4",
-    "url": "/integratable/static/media/KaTeX_SansSerif-Italic.95c5a3d4.woff"
-  },
-  {
     "revision": "8eb56b3ff5b141cd3732a24e65c2b339",
     "url": "/integratable/static/media/KaTeX_Math-Italic.8eb56b3f.woff"
   },
   {
     "revision": "35bda414c6c2f75940b086de18f42e72",
     "url": "/integratable/static/media/KaTeX_SansSerif-Regular.35bda414.woff"
+  },
+  {
+    "revision": "95c5a3d43efbcb8c14184d00a7c5eed4",
+    "url": "/integratable/static/media/KaTeX_SansSerif-Italic.95c5a3d4.woff"
   },
   {
     "revision": "f43e86963e9cfda37bb2e958ddedcaad",
@@ -168,24 +168,24 @@ self.__precacheManifest = [
     "url": "/integratable/static/media/KaTeX_Typewriter-Regular.ba01f72a.woff"
   },
   {
-    "revision": "c5b67fb3f6bdaa7f2dd75e5bc8d929eb",
-    "url": "/integratable/static/media/KaTeX_Main-Bold.c5b67fb3.woff2"
-  },
-  {
     "revision": "5aeca883bc41b522fdf1409ee912b51c",
     "url": "/integratable/static/media/KaTeX_Main-BoldItalic.5aeca883.woff"
+  },
+  {
+    "revision": "c5b67fb3f6bdaa7f2dd75e5bc8d929eb",
+    "url": "/integratable/static/media/KaTeX_Main-Bold.c5b67fb3.woff2"
   },
   {
     "revision": "bb7c45db8908c8fb88a293895a64e018",
     "url": "/integratable/static/media/KaTeX_Main-Italic.bb7c45db.woff"
   },
   {
-    "revision": "2eae604dbbc4b2c0ceede62c61c9e8df",
-    "url": "/integratable/static/media/KaTeX_SansSerif-Regular.2eae604d.ttf"
-  },
-  {
     "revision": "f9c440abdd25c5a954d855516fed39f9",
     "url": "/integratable/static/media/KaTeX_SansSerif-Italic.f9c440ab.ttf"
+  },
+  {
+    "revision": "2eae604dbbc4b2c0ceede62c61c9e8df",
+    "url": "/integratable/static/media/KaTeX_SansSerif-Regular.2eae604d.ttf"
   },
   {
     "revision": "e9169ca7b32608b6235ec9ffff742a71",
