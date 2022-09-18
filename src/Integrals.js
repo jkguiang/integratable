@@ -131,19 +131,19 @@ class IntegralCard extends Component {
         }
     }
     render() {
-        var url = (window.location.href.split("#"));
-        var base = (url.length < 3) ? window.location.href : (window.location.href).split("#"+url[url.length-1])[0];
-        var isAnchored = (url[url.length-1] === String(this.props.index));
-        var cardStyle = {
+        const url = (window.location.href.split("#"));
+        const base = (url.length < 3) ? window.location.href : (window.location.href).split("#"+url[url.length-1])[0];
+        const isAnchored = (url[url.length-1] === String(this.props.index));
+        const cardStyle = {
             width: "100%",
             overflowX: "auto"
         };
-        var anchoredStyle = {
+        const anchoredStyle = {
             width: "100%",
             overflowX: "auto",
             borderColor: "#000"
         };
-        var anchorStyle = {
+        const anchorStyle = {
             color: "#5cb85c",
             paddingTop: "0"
         };
@@ -159,13 +159,21 @@ class IntegralCard extends Component {
               </Col>
             </Row>
         );
+        var integral = this.props.integral+"\\biggr|_{x=a}^{x=b}";
+        if (this.props.restrict !== "") {
+            integral += "\\textnormal{, } "+this.props.restrict;
+        }
+        var valid = true
+        if (this.props.validity) {
+            valid = (this.props.validity === "valid");
+        }
         return (
             <React.Fragment>
               <Row id={this.props.index}>
                 <Col md={8} style={{paddingBottom: "15px"}}>
                   <Card style={(isAnchored) ? anchoredStyle : cardStyle}>
                     <CardBody>
-                      <BlockMath math={this.props.integral+"\\biggr|_{x=a}^{x=b}"+this.props.restrict} />
+                      <BlockMath math={integral} />
                     </CardBody>
                   </Card>
                 </Col>
@@ -175,7 +183,7 @@ class IntegralCard extends Component {
                     <CardBody>
                       <Form ref={(f) => this.form = f}>
                         {inputs}
-                        <textarea ref={(textarea) => this.textArea = textarea} style={{height:"0",width:"0",opacity:"0"}} value={this.props.integral+"\\biggr|_{x=a}^{x=b}"+this.props.restrict} readOnly />
+                        <textarea ref={(textarea) => this.textArea = textarea} style={{height:"0",width:"0",opacity:"0"}} value={integral} readOnly />
                       </Form>
                       <Row className="text-center">
                           <Col xs={4}>
@@ -206,8 +214,8 @@ class IntegralCard extends Component {
                             </UncontrolledTooltip>
                           </Col>
                       </Row>
-                       <Button outline color={(this.state.isGood) ? "success" : "danger"} block onClick={this.toggle} disabled={!this.state.isGood}>
-                         {(this.state.isGood) ? <FontAwesomeIcon icon="check-circle" /> : <FontAwesomeIcon icon="times-circle"   />} Submit
+                       <Button outline color={(valid && this.state.isGood) ? "success" : "danger"} block onClick={this.toggle} disabled={!(valid && this.state.isGood)}>
+                         {(valid && this.state.isGood) ? <FontAwesomeIcon icon="check-circle" /> : <FontAwesomeIcon icon="times-circle"   />} Submit
                        </Button>
                     </CardBody>
                   </Card>
