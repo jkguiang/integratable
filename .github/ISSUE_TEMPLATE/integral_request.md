@@ -7,9 +7,19 @@ assignees: ''
 
 ---
 
-**Write the LaTeX for your integral and its solution**
-```latex
-\int_a^b \ln(cx) dx = x\ln(cx)-x\biggr|_{x=a}^{x=b}
+**Copy and paste submission from the [contribution](https://jkguiang.github.io/integratable/contribute) page here**
+```
+{
+    "integral": "\\int_a^b x^n dx = \\frac{1}{n+1}x^{n+1}",
+    "restrict": "n \\neq -1",
+    "constants": [
+        "a",
+        "b",
+        "n"
+    ],
+    "query": "(1/(n+1))*x^(n+1)",
+    "plot": "x^(n)"
+}
 ```
 **Additional context**
 Add any other context or screenshots about the integral request here.
