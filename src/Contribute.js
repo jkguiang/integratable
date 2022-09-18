@@ -76,6 +76,7 @@ class Contribute extends Component {
     }
     render() {
         const demo = this.state.demo;
+        const issue_url = "https://github.com/jkguiang/integratable/issues/new?assignees=&labels=new+integral&template=integral_request.md&title=New Integral"
         return (
           <React.Fragment>
             <Jumbotron className="p-3 p-md-5 text-white rounded bg-dark">
@@ -100,9 +101,11 @@ class Contribute extends Component {
                         <UncontrolledTooltip placement="top" target="toClipboardPreview">
                           Copy submission to clipboard
                         </UncontrolledTooltip>
-                        <Button id="toGithub" color="link" style={{padding: "0", paddingLeft:"10px", color:"#000"}} onClick={this.handleCopy}>
-                          <FontAwesomeIcon icon={["fab", "github"]} />
-                        </Button>
+                        <a href={issue_url} target="_blank" rel="noopener noreferrer">
+                          <Button id="toGithub" color="link" style={{padding: "0", paddingLeft:"10px", color:"#000"}} onClick={this.handleCopy}>
+                            <FontAwesomeIcon icon={["fab", "github"]} />
+                          </Button>
+                        </a>
                         <UncontrolledTooltip placement="top" target="toGithub">
                           Open a submission on Github
                         </UncontrolledTooltip>
@@ -118,7 +121,7 @@ class Contribute extends Component {
                 <IntegralCard ref={child => this.integralCard = child} integral={demo.integral} restrict={(demo.hasOwnProperty("restrict")) ? demo.restrict : ""} constants={demo.constants} query={demo.query} plot={demo.plot} key={0} index={0} validity={this.state.isValid ? "valid" : "invalid"} />
               </Container>
               <p>
-                Fill out the form below, and the interactive preview above will automatically update for valid submissions. When you are satisfied with the result, copy+paste the code above into a new <a href="https://github.com/jkguiang/integratable/issues/new?assignees=&labels=new+integral&template=integral-request.md&title="><b>Github issue</b></a>!
+                Fill out the form below, and the interactive preview above will automatically update for valid submissions. When you are satisfied with the result, copy+paste the code above into a new <a href={issue_url}><b>Github issue</b></a>!
               </p>
               <Form>
                 <FormGroup row>
