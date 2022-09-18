@@ -6,7 +6,7 @@ import { Integrals } from './Integrals';
 const BasicDB = [
     {
         "integral": "\\int_a^b x^n dx = \\frac{1}{n+1}x^{n+1}",
-        "restrict": "\\textnormal{, } n \\neq -1",
+        "restrict": "n \\neq -1",
         "constants": ["a","b","n"],
         "query": "(1/(n+1))*x^(n+1)",
         "plot": "x^(n)"
@@ -25,7 +25,7 @@ const BasicDB = [
     },
     {
         "integral": "\\int_a^b (x+c)^n dx = \\frac{(x+c)^{n+1}}{n+1}",
-        "restrict": "\\textnormal{, } n \\neq -1",
+        "restrict": "n \\neq -1",
         "constants": ["a","b","c","n"],
         "query": "((x+c)^(n+1))/(n+1)",
         "plot": "(x+c)^(n)"

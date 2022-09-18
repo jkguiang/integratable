@@ -12,7 +12,7 @@ const RadicalDB = [
     },
     {
         "integral": "\\int_a^b \\sqrt{\\frac{x}{c-x}}\\textnormal{ }dx = -\\sqrt{x(c-x)}-c\\tan^{-1}\\biggr(\\frac{\\sqrt{x(c-x)}}{x-c}\\biggr)",
-        "restrict": "\\textnormal{ } a,b < c",
+        "restrict": "a,b < c",
         "constants": ["a","b","c"],
         "query": "(0-1)*(((x*(c-x))^(1/2))-c*atan(((x*(c-x))^(1/2))/(x-c)))",
         "plot": "((x)/(c-x))^(1/2)"
@@ -31,7 +31,7 @@ const RadicalDB = [
     },
     {
         "integral": "\\int_a^b \\sqrt{c^2-x^2}\\textnormal{ }dx = \\frac{1}{2}x\\sqrt{c^2-x^2}+ \\frac{1}{2}c^2\\tan^{-1}\\biggr(\\frac{x}{\\sqrt{c^2-x^2}}\\biggr) ",
-        "restrict": "\\textnormal{ } a,b < c",
+        "restrict": "a,b < c",
         "constants": ["a","b","c"],
         "query": "(1/2)*x*((c^2-x^2)^(1/2))+(1/2)*atan(x/((c^2-x^2)^(1/2)))",
         "plot": "(c^2-x^2)^(1/2)"
@@ -44,7 +44,7 @@ const RadicalDB = [
     },
     {
         "integral": "\\int_a^b \\frac{1}{\\sqrt{c^2-x^2}}\\textnormal{ }dx = \\sin^{-1}\\biggr(\\frac{x}{c}\\biggr)",
-        "restrict": "\\textnormal{ } a,b < c",
+        "restrict": "a,b < c",
         "constants": ["a","b","c"],
         "query": "asin(x/c)",
         "plot": "1/((c^2-x^2)^(1/2))"

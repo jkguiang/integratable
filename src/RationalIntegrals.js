@@ -6,7 +6,7 @@ import { Integrals } from './Integrals';
 const RationalDB = [
     {
         "integral": "\\int_a^b (x+c)^n dx = \\frac{(x+c)^{n+1}}{n+1}",
-        "restrict": "\\textnormal{, } n \\neq -1",
+        "restrict": "n \\neq -1",
         "constants": ["a","b","c","n"],
         "query": "((x+c)^(n+1))/(n+1)",
         "plot": "(x+c)^(n)"
