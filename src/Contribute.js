@@ -102,7 +102,7 @@ class Contribute extends Component {
                           Copy submission to clipboard
                         </UncontrolledTooltip>
                         <a href={issue_url} target="_blank" rel="noopener noreferrer">
-                          <Button id="toGithub" color="link" style={{padding: "0", paddingLeft:"10px", color:"#000"}} onClick={this.handleCopy}>
+                          <Button id="toGithub" color="link" style={{padding: "0", paddingLeft:"10px", color:"#000"}}>
                             <FontAwesomeIcon icon={["fab", "github"]} />
                           </Button>
                         </a>
