@@ -12,7 +12,7 @@ const LogDB = [
     },
     {
         "integral": "\\int_a^b x^n\\ln(cx) dx = x^{n+1}\\biggr(\\frac{\\ln(x)}{n+1}-\\frac{1}{(n+1)^2}\\biggr)",
-        "restrict": "\\textnormal{, } n \\neq -1",
+        "restrict": "n \\neq -1",
         "constants": ["a","b","c","n"],
         "query": "(x^(n+1))*((ln(x))/(n+1)-(1)/((n+1)^2))",
         "plot": "(x^n)*ln(c*x)"
@@ -37,7 +37,7 @@ const LogDB = [
     },
     {
         "integral": "\\int_a^b \\ln\\bigr(x^2-c^2\\bigr) dx = x\\ln\\bigr(x^2-c^2\\bigr)+c\\ln\\biggr(\\frac{x+c}{x-c}\\biggr)-2x",
-        "restrict": "\\textnormal{ } a,b < c",
+        "restrict": "a,b > c",
         "constants": ["a","b","c"],
         "query": "x*ln(x^2-c^2)+c*ln((x+c)/(x-c))-2*x",
         "plot": "ln((x^2)-(c^2))"
