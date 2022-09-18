@@ -5,8 +5,8 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import {
   faCalculator, faAngleDown, faAngleUp,
-  faHome, faCheckCircle, faTimesCircle,
-  faHeart, faInfoCircle, faDragon,
+  faCheckCircle, faTimesCircle, faPlusCircle, faInfoCircle,
+  faHeart, faDragon, faHome,
   faFistRaised, faHands, faStreetView,
   faAnchor, faCoffee, faBug,
   faSkullCrossbones, faAngleDoubleLeft, faAngleDoubleRight,
@@ -18,6 +18,7 @@ import { Nav, NavItem, Dropdown, DropdownItem, DropdownToggle, DropdownMenu, Nav
 import icon from './icon.ico';
 import Home from './Home';
 import About from './About';
+import Contribute from './Contribute';
 import Donate from './Donate';
 import { BasicIntegrals } from './BasicIntegrals';
 import { RationalIntegrals } from './RationalIntegrals';
@@ -28,14 +29,13 @@ import { TrigIntegrals } from './TrigIntegrals';
 
 // Load icons
 library.add(
-  fab, faCalculator, faAngleDown,
-  faAngleUp, faHome, faCheckCircle,
-  faTimesCircle, faHeart, faInfoCircle,
-  faDragon, faFistRaised, faHands,
-  faStreetView, faAnchor, faCoffee,
-  faBug, faSkullCrossbones, faAngleDoubleLeft,
-  faAngleDoubleRight, faClipboard, faClipboardCheck,
-  faUndoAlt );
+  fab, faCalculator, faAngleDown, faAngleUp,
+  faCheckCircle, faTimesCircle, faPlusCircle, faInfoCircle,
+  faHeart, faDragon, faHome,
+  faFistRaised, faHands, faStreetView,
+  faAnchor, faCoffee, faBug,
+  faSkullCrossbones, faAngleDoubleLeft, faAngleDoubleRight,
+  faClipboard, faClipboardCheck, faUndoAlt );
 
 class MainNavbar extends Component {
     constructor(props) {
@@ -106,9 +106,11 @@ class MainNavbar extends Component {
                       </LinkContainer>
                     </DropdownMenu>
                   </Dropdown>
-                  <NavItem>
-                    <NavLink href="https://github.com/jkguiang/integratable" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={['fab', 'github']}/> Github</NavLink>
-                  </NavItem>
+                  <LinkContainer to="/contribute">
+                    <NavItem>
+                      <NavLink href="/contribute"><FontAwesomeIcon icon="plus-circle" /> Contribute</NavLink>
+                    </NavItem>
+                  </LinkContainer>
                   <LinkContainer to="/donate">
                     <NavItem>
                       <NavLink href="/donate"><FontAwesomeIcon icon="heart" /> Donate</NavLink>
@@ -138,6 +140,7 @@ class App extends Component {
                 <Route exact path="/exponentials" component={ExponentialIntegrals}/>
                 <Route exact path="/trig" component={TrigIntegrals}/>
                 <Route exact path="/about" component={About}/>
+                <Route exact path="/contribute" component={Contribute}/>
                 <Route exact path="/donate" component={Donate}/>
                 <hr/>
                 <p className="text-muted text-center"><i><FontAwesomeIcon icon="bug" /> Please report any errors or post feature requests <a href="https://github.com/jkguiang/integratable/issues" target="_blank" rel="noopener noreferrer"><b>here</b></a>, thanks!</i></p>
