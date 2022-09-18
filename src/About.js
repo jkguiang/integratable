@@ -8,7 +8,7 @@ class About extends Component {
     render() {
         const demo = {
             "integral": "\\int_a^b x^n dx = \\frac{1}{n+1}x^{n+1}",
-            "restrict": "\\textnormal{, } n \\neq -1",
+            "restrict": "n \\neq -1",
             "constants": ["a","b","n"],
             "query": "(1/(n+1))*x^(n+1)",
             "plot": "x^(n)"
